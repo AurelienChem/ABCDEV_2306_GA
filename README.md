@@ -7,3 +7,5 @@ Coucou Tristan
 Hello Aurél !
 
 Essai suite cours : modification fichier
+
+Tu t'appelles Aurélien et ma femme Aurélie : elle déteste quand je la surnomme " Auréljoue " !!
