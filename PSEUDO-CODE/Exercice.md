@@ -42,4 +42,48 @@ Debut programme
     Lire ← R
     Ecrire "Saisir l'aire A"
     Lire ← A
-    
+    S ← π*R^2*A/360
+    Ecrire "L'aire du secteur circulaire est", S
+Fin programme
+
+Ex 1.4)
+
+VARIABLE
+    S est un reel
+    i est un reel
+    N est un reel
+    A est un reel
+    B est un reel
+
+Debut programme
+    Ecrire "Saisir la somme S"
+    Lire ← S
+    Ecrire "Saisir l'interet i"
+    Lire ← i
+    Ecrire "Saisir le nombre d'annees N"
+    Lire ← N
+    A ← S*(1+N*i)
+    B ← S*(1+i)^N
+    Ecrire "l'interet simple vaut", A
+    Ecrire "l'interet compose vaut", B
+Fin programme
+
+Ex 1.5)
+
+VARIABLE
+    a est un entier
+    b est un entier
+    c est un entier
+
+Debut programme
+    Ecrire "Saisir le nombre entier a"
+    Lire ← a
+    Ecrire "Saisir le nombre entier b"
+    Lire ← b
+    Ecrire "Les valeurs choisies sont :",a "et", b
+    c ← a
+    a ← b
+    b ← c
+    Ecrire "Les valeurs finales après inversion sont :",a "et",b
+Fin programme
+
