@@ -51,7 +51,7 @@ Ex 1.4)
 VARIABLE
     S est un reel
     i est un reel
-    N est un reel
+    N est un entier (gestion de la mémoire d'ou l'importance de mettre un entier)
     A est un reel
     B est un reel
 
