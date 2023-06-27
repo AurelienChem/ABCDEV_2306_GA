@@ -80,10 +80,10 @@ Debut programme
     Lire ← a
     Ecrire "Saisir le nombre entier b"
     Lire ← b
-    Ecrire "Les valeurs choisies sont :",a "et", b
-    c ← a
-    a ← b
-    b ← c
-    Ecrire "Les valeurs finales après inversion sont :",a "et",b
+    Ecrire "Nombre a",a,"Nombre b",b
+    c ← b
+    b ← a
+    a ← c
+    Ecrire "Les valeurs finales apres permutation sont :",a,"et",b
 Fin programme
 
