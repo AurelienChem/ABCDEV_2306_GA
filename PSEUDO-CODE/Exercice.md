@@ -40,7 +40,7 @@ VARIABLE
 Debut programme
     Ecrire "Saisir le rayon R"
     Lire ← R
-    Ecrire "Saisir l'aire A"
+    Ecrire "Saisir l'angle A"
     Lire ← A
     S ← π*R^2*A/360
     Ecrire "L'aire du secteur circulaire est", S
