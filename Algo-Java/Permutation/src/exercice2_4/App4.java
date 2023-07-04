@@ -6,10 +6,9 @@ public class App4 {
 
 	public static void main(String[] args) {
 		
-		Scanner scan;
 		int A;
 		
-		scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Saisir l'annee A :");
 		A = scan.nextInt();

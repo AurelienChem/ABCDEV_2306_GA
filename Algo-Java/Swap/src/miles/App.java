@@ -24,6 +24,7 @@ public class App {
 		
 		mi = km/1.609d;
 		System.out.println("La distance vaut " + mi + " miles.");
+		System.exit(0);
 		
 		}
 		

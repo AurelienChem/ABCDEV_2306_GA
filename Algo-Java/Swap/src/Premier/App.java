@@ -12,11 +12,11 @@ public class App {
 	       System.out.println("Entrez un nombre : ");  
 	       A = sc.nextInt();  
 	       if (verifiePremier(A)) {  
-	           System.out.println(A + " est un nombre premier");  
+	           System.out.println(A + " est un nombre premier");  // return true
 	       }
 	       else 
 	       {  
-	           System.out.println(A + " n'est pas un nombre premier");  
+	           System.out.println(A + " n'est pas un nombre premier");  // return false
 	       }  
 	   }  
 	   
