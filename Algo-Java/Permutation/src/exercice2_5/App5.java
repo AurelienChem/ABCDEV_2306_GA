@@ -18,7 +18,7 @@ public class App5 {
 		
 			if(A % i == 0){
 			
-				System.out.println(i+"\n");
+				System.out.println(" "+i);
 			
 			}
 			

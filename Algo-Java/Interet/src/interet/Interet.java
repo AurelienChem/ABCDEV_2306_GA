@@ -21,8 +21,8 @@ public class Interet {
 		System.out.println("Saisir le nombre d'années N :");
 		N = scan.nextInt();
 		
-		Si = S*(1+N*i);
-		Sc = S*Math.pow(1+i, 2);
+		Si = S*(1+N*i/100);
+		Sc = S*Math.pow(1+i/100, 2);
 		
 		System.out.println("L'interet simple vaut " + Si + " et l'interet compose vaut " + Sc);
 		
