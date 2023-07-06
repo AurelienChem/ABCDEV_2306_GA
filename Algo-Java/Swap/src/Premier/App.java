@@ -27,7 +27,7 @@ public class App {
 	       {  
 	           return false;  
 	       }  
-	       for (int i = 2; i <= Math.sqrt(A); i++) 
+	       for (int i = 2; i <= A-1; i++) 
 	       {  
 	           if (A % i == 0) 
 	           {  

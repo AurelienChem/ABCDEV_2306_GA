@@ -13,7 +13,7 @@ public class App6 {
 		A = sc.nextInt();
 		System.out.println("Entrez un nombre :");
 
-		for(i=2; i<=Math.sqrt(A); i++) {
+		for(i=2; i<=A-1; i++) {
 			
 			if(A % i == 0) {
 				System.out.println(A + " est un nombre premier");

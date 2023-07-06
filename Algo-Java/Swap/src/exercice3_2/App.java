@@ -8,14 +8,29 @@ public class App {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int somme;
+		double somme;
 		double nbMagasin;
 		
-		System.out.println("Saisir la somme S");
+		System.out.println("Saisir la somme S :");
 		somme = sc.nextInt();
 		
-		nbMagasin = Math.ceil((Math.log(somme)-Math.log(2))/Math.log(2)+1);
-		System.out.println("Le nombre de magasin est " + nbMagasin);
+		if(somme < 2) {
+			System.out.println("La somme utilise est trop petite");
+		}
+		
+		else {
+			System.out.println("Saisir la somme S :");
+		}
+		
+		for(int i = 1; i <= somme; i++) {
+			somme = somme/2 - 1;
+			System.out.println(i + " , " + somme);
+			
+			if(somme < 2) {
+				System.out.println("Barnabe peut visiter jusqu'a " + (i+1) + " magasins avec une somme de " + somme + ".");
+				break;
+			}
+		}
 		
 		sc.close();
 	}

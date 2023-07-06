@@ -14,7 +14,7 @@ public class App5 {
 		A = sc.nextInt();
 		System.out.println("Liste des diviseurs de " + A);
 		
-		for(i=1; i<=A; i++) {
+		for(i=2; i<=A-1; i++) {
 		
 			if(A % i == 0){
 			
