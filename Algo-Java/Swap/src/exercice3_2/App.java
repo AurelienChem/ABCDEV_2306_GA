@@ -14,15 +14,9 @@ public class App {
 		System.out.println("Saisir la somme S");
 		somme = sc.nextInt();
 		
-		nbMagasin = Math.ceil((somme - 2)*Math.pow(somme, -2)+2);
+		nbMagasin = Math.ceil((Math.log(somme)-Math.log(2))/Math.log(2)+1);
+		System.out.println("Le nombre de magasin est " + nbMagasin);
 		
-		
-		for(int i = 0; i <= 10; i++) {
-			if(nbMagasin > 3) {
-				
-				System.out.println(i + "," + nbMagasin);
-			}
-		}
 		sc.close();
 	}
 }
