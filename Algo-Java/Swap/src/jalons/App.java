@@ -48,7 +48,7 @@ public class App {
 		if(etudiantIlest == true && onestMercredi == true) {
 			System.out.println("la réduction est de 50%");
 		}
-		else if (etudiantIlest == true && onestMercredi == true){
+		else if (etudiantIlest == true && onestJeudi == true){
 			System.out.println("la réduction est de 20%");
 			}
 		

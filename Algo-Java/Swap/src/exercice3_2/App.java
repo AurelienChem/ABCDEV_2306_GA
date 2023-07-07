@@ -8,7 +8,7 @@ public class App {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		double somme;
+		int somme;
 		double nbMagasin;
 		
 		System.out.println("Saisir la somme S :");
@@ -22,12 +22,12 @@ public class App {
 			System.out.println("Saisir la somme S :");
 		}
 		
-		for(int i = 1; i <= somme; i++) {
-			somme = somme/2 - 1;
-			System.out.println(i + " , " + somme);
+		for(int i = 0; i <= somme; i++) {
+			nbMagasin = (somme+2)*Math.pow(2, -i)-2;
+			System.out.println((i+1) + " , " + nbMagasin);
 			
-			if(somme < 2) {
-				System.out.println("Barnabe peut visiter jusqu'a " + (i+1) + " magasins avec une somme de " + somme + ".");
+			if(nbMagasin <= 0) {
+				System.out.println("Barnabe peut visiter jusqu'a " + i + " magasins avec une somme de " + somme + ".");
 				break;
 			}
 		}
