@@ -45,13 +45,16 @@ public class App {
 			onestJeudi = false;
 		}
 		
-		if(etudiantIlest == true && onestMercredi == true) {
-			System.out.println("la réduction est de 50%");
+		if(onestJeudi == true && onestMercredi == true) {
+			System.out.println("On ne peut pas etre Mercredi Et Jeudi en meme temps");
 		}
 		else if (etudiantIlest == true && onestJeudi == true){
 			System.out.println("la réduction est de 20%");
 			}
-		
+		else if(etudiantIlest == true && onestMercredi == true) 
+		{
+			System.out.println("la réduction est de 50%");
+		}
 		else
 			System.out.println("Pas de réduction");
 		

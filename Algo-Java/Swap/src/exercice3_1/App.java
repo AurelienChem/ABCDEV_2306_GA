@@ -30,7 +30,7 @@ public class App {
 				System.out.println("Bravo, vous avez devine le bon numero en " + enter + " coups !");
 				break;
 				}
-			
+				
 			else if(numTest > numRandom) {
 				System.out.println("Choisir un numero plus petit (entre " + intervalle + " et " + min + ")");
 				max = intervalle;

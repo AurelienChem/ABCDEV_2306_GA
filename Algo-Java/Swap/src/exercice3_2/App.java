@@ -19,19 +19,18 @@ public class App {
 		}
 		
 		else {
-			System.out.println("Saisir la somme S :");
-		}
 		
-		for(int i = 0; i <= somme; i++) {
+			for(int i = 0; i <= somme; i++) {
 			nbMagasin = (somme+2)*Math.pow(2, -i)-2;
 			System.out.println((i+1) + " , " + nbMagasin);
 			
 			if(nbMagasin <= 0) {
-				System.out.println("Barnabe peut visiter jusqu'a " + i + " magasins avec une somme de " + somme + ".");
+				System.out.println("Barnabe peut visiter jusqu'a " + i + " magasin(s) avec une somme de " + somme + " euros.");
 				break;
 			}
+		 
+			}
 		}
-		
 		sc.close();
 	}
 }
