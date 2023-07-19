@@ -8,8 +8,8 @@ public class App {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String motTest = " ";
-		String lettreTest = " ";
+		String motTest;
+		String lettreTest;
 		
 		System.out.println("Entrez un mot");
 		motTest = sc.nextLine() + ".";
