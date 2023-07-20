@@ -14,7 +14,7 @@ public class App2 {
 	 	Lire A
 	 	Ecrire "Saisir le nombre B"
 	 	Lire B
-	 	Debut Si
+	 	Debut Si 
 	 	Si A égal B
 	 		Ecrire A , " = " , B
 	 	Sinon Si A > B
@@ -24,16 +24,15 @@ public class App2 {
 	 	Fin Si
 	 Fin du programme
 	 */
-		Scanner scan;
 		int A, B;
 		
-		scan = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Saisir le numero A");
-		A = scan.nextInt();
+		A = sc.nextInt();
 		
 		System.out.println("Saisir le numero B");
-		B = scan.nextInt();
+		B = sc.nextInt();
 		
 		if(A == B) {
 			System.out.println(A + " = " + B);
@@ -48,6 +47,6 @@ public class App2 {
 			
 		}
 		
-		scan.close();
+		sc.close();
 	}
 }
