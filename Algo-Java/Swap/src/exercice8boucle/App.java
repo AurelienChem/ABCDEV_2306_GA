@@ -21,7 +21,7 @@ public class App {
 			if(somme == 0) {
 				System.out.println("Entrez un prix");
 				prix = sc.nextInt();
-				System.out.println("Vous recevez " + Math.floor((total - prix)/10) + " billets de 10 euros et " + Math.floor(Math.floor(total - prix)%10/5) + " billet de 5 euros et " + (total - prix)%5 + " pieces de 1 euro");
+				System.out.println("Vous recevez " + Math.floor((total - prix)/10) + " billets de 10 euros et " + Math.floor((total - prix)%10/5) + " billet de 5 euros et " + (total - prix)%5 + " pieces de 1 euro");
 			}
 		} while (somme != 0);
 		
