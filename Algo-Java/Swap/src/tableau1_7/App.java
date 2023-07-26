@@ -31,8 +31,9 @@ public class App {
 				break;
 		}
 			while(i < tableau.length);
-			sc.close();
 		}
+		
+		sc.close();
 	}
 	
 

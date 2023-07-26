@@ -1,4 +1,4 @@
-package tableau1_8;
+package tableau1_9;
 
 import java.util.Scanner;
 
@@ -7,7 +7,8 @@ public class App {
 	public static void main(String[] args)
 	{
 		int nombre; 
-		int max;
+		double somme = 0;
+		double moyenne = 0;
 	
 		Scanner sc = new Scanner(System.in);
 		
@@ -24,16 +25,23 @@ public class App {
 			tableau[i] = sc.nextInt();
 		}
 	
-		max = tableau[0];
-	
 		for(int i = 0; i < nombre; i++)
 		{
-			if(max < tableau[i])
-	
+			somme = somme + tableau[i];
+			moyenne = (double) (somme/nombre);
+		}
+			System.out.println("Les notes au dessus de la moyenne sont (moyenne = " + moyenne + "):");
+			
+		for(int i = 0; i < nombre; i++)
+		{
+			if(moyenne < tableau[i])
+				
 			{
-			max = tableau[i];
+				System.out.print(tableau[i] + ", ");
 			}
-		}
-		System.out.println("La valeur la plus grande est " + max);
-		}
+		}	
+		
+		sc.close();
 	}
+	
+}
