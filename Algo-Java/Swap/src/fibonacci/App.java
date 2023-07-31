@@ -6,10 +6,9 @@ public class App {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+Scanner sc = new Scanner(System.in);
 		
 		int nombre;
-		String choix;
 		
 		System.out.println("Combien de nombres de la suite de Fibonacci souhaitez-vous affiche ?");
 		nombre = sc.nextInt();
@@ -19,22 +18,18 @@ public class App {
 		System.out.println("Les " + nombre + " premiers nombres de la suite de Fibonacci sont: ");
 		
 		System.out.print("0, " + "1, ");
+		tableau[0] = 0;
+		tableau[1] = 1;
 		
-		for(int i=0;i<nombre;i++)
+		for(int i=2;i<tableau.length;i++)
 		{
-			do
-		{	
-				tableau[0] = 0;
-				tableau[1] = 1;
-				tableau[i+2] = tableau[i+1] + tableau[i];
-				System.out.print(+ tableau[i+2] + ", ");
-				break;
+				tableau[i] = tableau[i-1] + tableau[i-2];
+				System.out.print( tableau[i] + ", ");
+				
 		}
-			while(i < tableau.length);
-		}
+		
 		
 		sc.close();
-
 	
 	}	
 		

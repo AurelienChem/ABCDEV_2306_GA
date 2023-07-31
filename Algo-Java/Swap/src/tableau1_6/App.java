@@ -11,7 +11,6 @@ public class App {
         int tableau1[] = {4,8,7,12};
         int tableau2[] = {3,6};
         int somme = 0;
-        String plus = "+";
 		// TODO Auto-generated method stub
         
         for (int i = 0; i < tableau1.length; i++)
@@ -21,7 +20,7 @@ public class App {
         	
         	if((tableau2.length - 1) != j || (tableau1.length - 1) != i) {
         	
-        	System.out.print(tableau1[i] + "*" + tableau2[j] + " + " );  // System.out.print(somme + " "); (Ici, affiche 8 valeurs)
+        		System.out.print(tableau1[i] + "*" + tableau2[j] + " + " );  // System.out.print(somme + " "); (Ici, affiche 8 valeurs)
             
         	}
         	
