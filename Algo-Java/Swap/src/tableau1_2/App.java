@@ -33,7 +33,6 @@ public class App {
         {
             System.out.print(tableauvoyelle[i] + " ");
         }
-   
 
         sc.close();
 	}
