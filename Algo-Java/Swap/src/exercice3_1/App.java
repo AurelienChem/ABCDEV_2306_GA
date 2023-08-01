@@ -9,7 +9,7 @@ public class App {
 	Scanner sc = new Scanner(System.in);
 	
 	int numTest;
-	int numRandom = 0 + (int)(Math.random() * ((100 - 0) + 1)); // Min + (int)(Math.random() * ((Max - Min) + 1)), inclus Max et Min
+	int numRandomJoueur = 0 + (int)(Math.random() * ((100 - 0) + 1)); // Min + (int)(Math.random() * ((Max - Min) + 1)), inclus Max et Min
 	int enter = 0;
 	int intervalle;
 	int min = 0;
@@ -26,12 +26,12 @@ public class App {
 				System.out.println("Invalide. \nLe nombre doit etre comprise entre 0 et 100");
 				}
 		
-			else if(numTest == numRandom) {
+			else if(numTest == numRandomJoueur) {
 				System.out.println("Bravo, vous avez devine le bon numero en " + enter + " coups !");
 				break;
 				}
 				
-			else if(numTest > numRandom) {
+			else if(numTest > numRandomJoueur) {
 				System.out.println("Choisir un numero plus petit (entre " + intervalle + " et " + min + ")");
 				max = intervalle;
 				}

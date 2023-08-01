@@ -23,18 +23,19 @@ public class App {
 	
 
 
-public static String retourneChaine(String chaineSaisie)
-{
-	String chaineInverser="";
-	for(int i = chaineSaisie.length()-1;i>=0;i--)
+	public static String retourneChaine(String chaineSaisie)
 	{
+		String chaineInverser="";
+		for(int i = chaineSaisie.length()-1;i>=0;i--)
+		{
 		chaineInverser = chaineSaisie.charAt(chaineSaisie.length()-i-1) + chaineInverser;
-	}
+		}
 	
-	return chaineInverser;
-}
+		return chaineInverser;
+	}
 
 }
+
 //Scanner sc = new Scanner(System.in);
 
 /*	int nombre;
