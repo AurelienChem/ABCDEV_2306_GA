@@ -31,10 +31,12 @@ public class App {
 	
 			{
 			max = tableau[i];
-			i = position;
-			position = position + 1;
+			position = i;
 			}
 		}
 		System.out.println("La valeur la plus grande est " + max + " en position " + (position + 1));
+		
+		sc.close();
 		}
+		
 	}

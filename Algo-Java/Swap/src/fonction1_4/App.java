@@ -116,7 +116,7 @@ public class App {
 				break;
 				}
 			else if(numTestOrdi == numRandom) {
-				System.out.println("Dommage, vous avez perdu, le numero etait " + numRandom + " (l'ordinateur l'a devine en " + enter + " coups)"+ " " + limite);
+				System.out.println("Dommage, vous avez perdu, le numero etait " + numRandom + " (l'ordinateur l'a devine en " + enter + " coups)");
 				break;
 			}
 			else {
