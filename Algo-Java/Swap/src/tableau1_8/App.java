@@ -7,7 +7,8 @@ public class App {
 	public static void main(String[] args)
 	{
 		int nombre; 
-		int max;
+		int max = 0;
+		int position = 0;
 	
 		Scanner sc = new Scanner(System.in);
 		
@@ -24,16 +25,16 @@ public class App {
 			tableau[i] = sc.nextInt();
 		}
 	
-		max = tableau[0];
-	
 		for(int i = 0; i < nombre; i++)
 		{
 			if(max < tableau[i])
 	
 			{
 			max = tableau[i];
+			i = position;
+			position = position + 1;
 			}
 		}
-		System.out.println("La valeur la plus grande est " + max);
+		System.out.println("La valeur la plus grande est " + max + " en position " + (position + 1));
 		}
 	}

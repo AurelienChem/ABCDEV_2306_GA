@@ -21,7 +21,6 @@ public class App {
 	int limite = 0;
 	int essais = 0;
 	String choix;
-	String essai;
 	boolean fermeture = false;
 	
 	do {
@@ -34,29 +33,7 @@ public class App {
 		}
 		else if(choix.equals("O") || choix.equals("o") || choix.equals("Oui") || choix.equals("oui") || choix.equals("OUI")) {
 			
-			do {
-			System.out.println("Voulez-vous jouer sans ou avec limite de coups d'essai? Sans(S) ou Avec(A) ou Arreter le jeu(N)");
-			essai = sc.nextLine();
-			
-			if(essai.equals("S") || essai.equals("s") || essai.equals("Sans") || essai.equals("sans") || essai.equals("SANS")) {
-				
-				fermeture = false;
-				System.out.println(fourchetteVSsans(numTestJoueur1, numTestOrdi1, numRandom1, enter1, intervalleJoueur1, intervalleOrdi1, minJoueur1, minOrdi1, maxJoueur1, maxOrdi1));
-				}
-			else if(essai.equals("A") || essai.equals("a") || essai.equals("Avec") || essai.equals("avec") || essai.equals("AVEC")) {
-				
-				fermeture = false;
-				System.out.println(fourchetteVSavec(numTestJoueur1, numTestOrdi1, numRandom1, enter1, intervalleJoueur1, intervalleOrdi1, minJoueur1, minOrdi1, maxJoueur1, maxOrdi1, limite, essais));
-			}
-			else if((essai.equals("N") || essai.equals("n") || essai.equals("Non") || essai.equals("non") || essai.equals("NON")) && !fermeture){
-				fermeture = true;
-				System.out.println("Fin du jeu");
-				break;
-				}
-			else
-				System.out.println("Saisie invalide");
-			
-			} while(!fermeture);
+		System.out.println(fourchetteVSavec(numTestJoueur1, numTestOrdi1, numRandom1, enter1, intervalleJoueur1, intervalleOrdi1, minJoueur1, minOrdi1, maxJoueur1, maxOrdi1, limite, essais));
 		}
 		else
 		System.out.println("Saisie invalide");	
@@ -67,82 +44,10 @@ public class App {
 	
 	}
 	
-	private static String fourchetteVSsans(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j) {
-	
-	String fourchetteVSordi = "";
-	
-	Scanner sc = new Scanner(System.in);	
-		
-	int numTestJoueur = a;
-	int numTestOrdi = b = 0 + (int)(Math.random() * ((100 - 0) + 1));
-	int numRandom = c = 0 + (int)(Math.random() * ((100 - 0) + 1)); // Min + (int)(Math.random() * ((Max - Min) + 1)), inclus Max et Min
-	int enter = d = 0;
-	int intervalleJoueur = e;
-	int intervalleOrdi = f;
-	int minJoueur = g = 0;
-	int minOrdi = h = 0;
-	int maxJoueur = i = 100;
-	int maxOrdi = j = 100;
-
-		do {
-		System.out.println("Entrez une nombre entier compris entre 0 et 100 :");
-		numTestJoueur = sc.nextInt();
-		enter = enter + 1;
-		intervalleJoueur = numTestJoueur;
-		intervalleOrdi = numTestOrdi;
-
-
-			if(numTestJoueur > 100 || numTestJoueur < 0) {
-				System.out.println("Invalide. \nLe nombre doit etre comprise entre 0 et 100");
-				}
-			else if(numTestJoueur > numRandom && numTestOrdi > numRandom) {
-				System.out.println("Choisir un numero plus petit (entre " + intervalleJoueur + " et " + minJoueur + ") \n Numero choisi par l'ordinateur (entre " + intervalleOrdi + " et "  + minOrdi + ") : " + numTestOrdi);
-				maxJoueur = intervalleJoueur;
-				maxOrdi = intervalleOrdi;
-				numTestOrdi = maxOrdi - (int)(Math.random() * ((maxOrdi - minOrdi) + 1));
-				}
-			else if(numTestJoueur > numRandom && numTestOrdi < numRandom) {
-				System.out.println("Choisir un numero plus petit (entre " + intervalleJoueur + " et " + minJoueur + ") \n Numero choisi par l'ordinateur (entre " + intervalleOrdi + " et "  + maxOrdi + ") : " + numTestOrdi);
-				maxJoueur = intervalleJoueur;
-				minOrdi = intervalleOrdi;
-				numTestOrdi = minOrdi + (int)(Math.random() * ((maxOrdi - minOrdi) + 1));
-				}
-
-			else if(numTestJoueur < numRandom && numTestOrdi < numRandom) {
-				System.out.println("Choisir un numero plus grand (entre " + maxJoueur + " et " + intervalleJoueur + ") \n Numero choisi par l'ordinateur (entre " + intervalleOrdi + " et "  + maxOrdi + ") : " + numTestOrdi);
-				minJoueur = intervalleJoueur;
-				minOrdi = intervalleOrdi;
-				numTestOrdi = minOrdi + (int)(Math.random() * ((maxOrdi - minOrdi) + 1));
-				}
-			else if(numTestJoueur < numRandom && numTestOrdi > numRandom) {
-				System.out.println("Choisir un numero plus grand (entre " + maxJoueur + " et " + intervalleJoueur + ") \n Numero choisi par l'ordinateur (entre " + intervalleOrdi + " et "  + minOrdi + ") : " + numTestOrdi);
-				minJoueur = intervalleJoueur;
-				maxOrdi = intervalleOrdi;
-				numTestOrdi = maxOrdi - (int)(Math.random() * ((maxOrdi - minOrdi) + 1));
-				}
-			else if(numTestJoueur == numRandom) {
-				System.out.println("Bravo, vous avez devine le bon numero en " + enter + " coups !");
-				break;
-				}
-			else if(numTestOrdi == numRandom) {
-				System.out.println("Dommage, vous avez perdu, le numero etait " + numRandom + " (l'ordinateur l'a devine en " + enter + " coups)");
-				break;
-				}
-
-			} 
-
-		while(numTestJoueur <= 100 || numTestJoueur >= 0); {
-
-		}
-		
-		return fourchetteVSordi;
-	}
-
-
 
 	private static String fourchetteVSavec(int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l) {
 	
-	String fourchetteVSordi2 = "";
+	String fourchetteVSordi = "";
 	
 	Scanner sc = new Scanner(System.in);	
 		
@@ -163,7 +68,7 @@ public class App {
 		do {
 		
 		if(limite == 0)	 {
-		System.out.println("Combien d'essais voulez-vous :");
+		System.out.println("Combien d'essais voulez-vous (taper 0 pour essai illimite):");
 		essais = sc.nextInt();
 		}
 		System.out.println("Entrez une nombre entier compris entre 0 et 100 :");
@@ -222,7 +127,7 @@ public class App {
 		while(numTestJoueur <= 100 || numTestJoueur >= 0); {
 		}
 
-		return fourchetteVSordi2;
+		return fourchetteVSordi;
 	}
 
 }

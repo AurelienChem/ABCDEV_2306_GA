@@ -73,7 +73,7 @@ public class App {
 		System.out.println("Vous avez emis " + ordre(nbCB, nbCheque, nbVirement) + " ordres de debit dont :");
 		System.out.println(CB(nbCB, nbCheque, nbVirement) + " % par Carte Bleue");
 		System.out.println(cheque(nbCB, nbCheque, nbVirement) + " % par cheque");
-		System.out.println(virement(nbCB, nbCheque, nbVirement) + " % virement");
+		System.out.println(virement(nbCB, nbCheque, nbVirement) + " % par virement");
 		
 	sc.close();
 	
