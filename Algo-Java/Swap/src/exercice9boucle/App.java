@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class App {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		Scanner sc = new Scanner(System.in);
 		
 		int nbChevauxPartant;
 		int nbChevauxJoues;
-		double factoriellePartant = 1;
-		double factorielleJoues = 1;
-		double factorielleDiff = 1;
 		
 	do {
 		System.out.println("Entrez le nombre de chevaux partant :");
@@ -22,21 +19,28 @@ public class App {
 		nbChevauxJoues = sc.nextInt();
 		
 		if(nbChevauxJoues == 3 || nbChevauxJoues == 4 || nbChevauxJoues == 5 ) {
-		    for(int i=1; i <= nbChevauxPartant; i++){ 
-		    	factoriellePartant = factoriellePartant * i;
-		    }
-		    for(int j=1; j <= nbChevauxJoues; j++){ 
-		    	factorielleJoues = factorielleJoues * j;
-		    }
-			for(int k=1; k <= nbChevauxPartant - nbChevauxJoues; k++){ 
-		    	factorielleDiff = (factoriellePartant - factorielleJoues) * k;
-		    }
-			System.out.println("Les chances de gagner le tirage (" + nbChevauxJoues + " chevaux joues pour " + nbChevauxPartant +  " chevaux partant) sont \nDans l'ordre : " + (factoriellePartant/factorielleDiff) + "%\nDans le desordre :" + ((factoriellePartant/(factorielleJoues * factorielleDiff))) + "%");
+			
+			System.out.println("Les chances de gagner le tirage (" + nbChevauxJoues + " chevaux joues pour " + nbChevauxPartant +  " chevaux partant) sont \nDans l'ordre : " + factorielle(nbChevauxPartant - nbChevauxJoues)/factorielle(nbChevauxPartant)*100d + "%\nDans le desordre :" + (factorielle(nbChevauxJoues)*factorielle(nbChevauxPartant - nbChevauxJoues))/factorielle(nbChevauxPartant)*100d + "%");
 			break;
 		}
 		else {
 			System.out.println("Saisie invalide :");	
 		}
 	} while(nbChevauxPartant > nbChevauxJoues || nbChevauxJoues > 2 || nbChevauxJoues < 6 );
+	
+	sc.close();
+	
 	}
+	
+    public static double factorielle(int num){
+        int result = 1; 
+
+        for(int i=1; i<=num; i++){
+          result = result*i;
+        }
+
+        return result;
+      }
 }
+
+
