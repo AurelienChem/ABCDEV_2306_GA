@@ -1,6 +1,10 @@
 package bouteille;
 
+import java.util.Scanner;
+
 public class Bouteille {
+	
+	Scanner sc = new Scanner(System.in);
 	
 	private double capaciteEnL;
 	private double contenanceEnL;
@@ -52,7 +56,61 @@ public class Bouteille {
 		else {
 			return false;
 		}
+	}	
+	public boolean viderTout() {
+		if(this.estOuverte && this.contenanceEnL > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
 	}
 	
+	public boolean remplir() {
+		double ajout;
+		if(estOuverte && contenanceEnL != capaciteEnL)
+		{
+			System.out.println("Combien voulez vous rajouter de litre ?");
+			ajout = sc.nextDouble();
+			if(ajout + contenanceEnL <= capaciteEnL)
+			{
+				contenanceEnL = contenanceEnL + ajout;
+			}
+			else
+			{
+				System.out.println("ca fera trop.");
+			}
+		}else if (!estOuverte)
+		{
+			System.out.println("Ouvrez d'abord la bouteille");
+		}
+		else if (contenanceEnL == capaciteEnL)
+		{
+			System.out.println("La bouteille est pleine");
+		}
+		return true;
+	}
+	public boolean vider()
+	{
+		double reduction;
+		if(estOuverte && contenanceEnL != 0)
+		{
+			System.out.println("Combien voulez vous rajouter de litre?");
+			reduction = sc.nextDouble();
+			if(reduction + contenanceEnL > 0)
+			{
+				contenanceEnL = contenanceEnL - reduction;
+			}
+
+		}else if (!estOuverte)
+		{
+			System.out.println("Ouvrez d'abord la bouteille");
+		}
+		else if (contenanceEnL == 0)
+		{
+			System.out.println("La bouteille est vide");
+		}
+		return true;
+	}
 }
