@@ -24,7 +24,7 @@ public class PorteDeGarage {
 		
 		this.nomMatiere = "bois";
 		this.nomMarque = "Leroy Merlin";
-		this.estOuverte = false;
+		this.estOuverte = true;
 		this.estVerouille = false;
 		
 	}
@@ -80,19 +80,19 @@ public class PorteDeGarage {
 				
 				System.out.println("la porte de garage est ouverte de " + pourcentageOuverture + "%");
 			}
-		else if(!this.estVerouille) {
+		}
+			
+		else if(this.estVerouille && !this.estOuverte) {
 			
 			System.out.println("Veuillez d'abord deverouiller la porte");
 			
 		}
 			
-		else if(!this.estOuverte) {
+		else if(!this.estOuverte && !this.estVerouille) {
 			
 			System.out.println("Veuillez d'abord ouvrir la porte");
 			
 		}
-				
-			}
 		return pourcentageOuverture;
 		}
 }
