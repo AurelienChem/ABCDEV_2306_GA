@@ -5,8 +5,8 @@ public class TestCompte {
 		
 		Compte compte = new Compte("Caisse d'Epargne", 1000);
 		
-		compte.deposer(); // ne pas mettre de types de donnees quand renvoie void
-		compte.retirer();
+		compte.deposer(500); // ne pas mettre de types de donnees quand renvoie void
+		compte.retirer(200);
 		compte.afficher();
 	}
 }

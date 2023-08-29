@@ -20,21 +20,15 @@ public class Compte {
 	public Compte(String _nomBanque, double _solde) {
 	
 		
-		this.nomBanque = "Caisse d'Epargne";
-		this.solde = 1000;
+		this.nomBanque = _nomBanque;
+		this.solde = _solde;
 	}
 	
-	public void deposer() {
-		double depot;
-		System.out.println("Combien voulez-vous deposer ?");
-		depot = sc.nextDouble();
-		solde = solde + depot;
+	public void deposer(double depot) {
+		this.solde = this.solde + depot;
 	}
 	
-	public void retirer() {
-		double retrait;
-		System.out.println("Combien voulez-vous retirer ?");
-		retrait = sc.nextDouble();
+	public void retirer(double retrait) {
 		solde = solde - retrait;
 	}
 	
