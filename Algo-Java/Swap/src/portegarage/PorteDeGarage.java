@@ -30,7 +30,7 @@ public class PorteDeGarage {
 	}
 	
 	public boolean ouvrir() {
-		if(!this.estOuverte) {
+		if(!this.estOuverte && !this.estVerouille) {
 			this.estOuverte = true;
 			return true;
 		}
