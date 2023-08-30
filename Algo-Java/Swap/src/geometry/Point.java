@@ -7,6 +7,8 @@ public class Point {
 	
 	public Point() {
 		
+		System.out.println("Creation d'un point par defaut");
+		
 		abscisse = 0;
 		ordonne = 0;
 	}
