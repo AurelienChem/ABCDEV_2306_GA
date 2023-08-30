@@ -6,7 +6,7 @@ public class Cercle {
 
 	Scanner sc = new Scanner(System.in);
 	
-	Point centre = new Point(0,0); //Point(Position Abscisse du point, Position Ordonne du point)
+	Point centre = new Point(3,3); //Point(Position Abscisse du point, Position Ordonne du point)
 	
 	double rayon;
 	double centreCercleAbscisse;
@@ -47,12 +47,15 @@ public class Cercle {
 	
 	public void testAppartenance() {
 		
-		appartenance = Math.sqrt(Math.pow(centre.abscisse - centreCercleAbscisse, 2) + Math.pow(centre.ordonne - centreCercleOrdonne, 2));
+		appartenance = Math.sqrt(Math.pow(centre.abscisse - this.centreCercleAbscisse, 2) + Math.pow(centre.ordonne - this.centreCercleOrdonne, 2));
+		System.out.println("Coordonnes point : (" + centre.abscisse + "," + centre.ordonne + ") \n" + "Coordonnes centre rayon : (" + this.centreCercleAbscisse + "," + this.centreCercleOrdonne + ")\n" + "Rayon : " + this.rayon);
 		
-		if(appartenance <= this.rayon) {
+		if(appartenance < this.rayon) {
 			System.out.println("Le point est dans le cercle");
+		}else if (appartenance == this.rayon){
+			System.out.println("Le point est sur la bordure du cercle");
 		}else {
-			System.out.println("Le point n'est pas dans le cercle");
+			System.out.println("Le point est n'est pas dans le cercle");
 		}
 	}
 	
