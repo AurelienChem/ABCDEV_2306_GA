@@ -6,16 +6,15 @@ public class Cercle {
 
 	Scanner sc = new Scanner(System.in);
 	
-	Point point = new Point();
+	Point centre = new Point(5,5);
 	double rayon;
-	boolean appartenance;
+	double appartenance;
 	
 	public Cercle() {
 		
 		System.out.println("Creation d'un rectangle par defaut");
 		
 		rayon = 0;
-		appartenance = false;
 		
 	}
 	
@@ -39,18 +38,18 @@ public class Cercle {
 		
 	}
 	
-	public boolean testAppartenance() {
+	public void testAppartenance() {
 		
-		if(this.point >= this.rayon) {
-			return false;
-		}
-		else{
-			return true;
+		appartenance = Math.sqrt(Math.pow(centre.abscisse, 2) + Math.pow(centre.ordonne, 2));
+		if(appartenance < this.rayon) {
+			System.out.println("Le point est dans le cercle");
+		}else {
+			System.out.println("Le point n'est pas dans le cercle");
 		}
 	}
 	
 	public void afficher() {
-		System.out.print("Le perimetre vaut : " + perimetre() + ", la surface vaut : " + surface() + "et inscription dans le cercle : " + testAppartenance() + " " + testAppartenance());
+		System.out.print("Le perimetre vaut : " + perimetre() + ", la surface vaut : " + surface());
 		
 	}
 }

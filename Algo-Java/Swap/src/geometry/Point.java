@@ -11,11 +11,10 @@ public class Point {
 		ordonne = 0;
 	}
 	
-	public double Point(double _abscisse, double _ordonne) {
+	public Point(double _abscisse, double _ordonne) {
 		
 		abscisse = _abscisse;
 		ordonne = _ordonne;
-		return Math.pow(abscisse*abscisse + ordonne*ordonne, 1/2);
 	}
 	
 }
