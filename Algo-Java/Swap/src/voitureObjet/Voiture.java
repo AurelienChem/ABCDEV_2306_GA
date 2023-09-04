@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Voiture {
 	Scanner sc = new Scanner(System.in);
 	
-	String marque;
-	double prix;
+	private String marque;
+	private double prix;
 	
 	public Voiture() {
 		
