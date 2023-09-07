@@ -23,12 +23,12 @@ public class Voiture {
 		return this.prix;
 	}
 	
-	public void setMarque(String _Marque) {
-		this.marque = _Marque;
+	public void setMarque(String _marque) {
+		this.marque = _marque;
 	}
 	
-	public void setPrix(double _Prix) {
-		this.prix = _Prix;
+	public void setPrix(double _prix) {
+		this.prix = _prix;
 	}
 	
 	public void afficher() {

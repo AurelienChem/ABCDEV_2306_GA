@@ -15,8 +15,8 @@ public class Point {
 	
 	public Point(double _abscisse, double _ordonne) {
 		
-		abscisse = _abscisse;
-		ordonne = _ordonne;
+		this.abscisse = _abscisse;
+		this.ordonne = _ordonne;
 	}
 	
 }

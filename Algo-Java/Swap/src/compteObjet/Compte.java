@@ -25,11 +25,11 @@ public class Compte {
 	}
 	
 	public void deposer(double depot) {
-		this.solde = this.solde + depot;
+		this.solde += depot;
 	}
 	
 	public void retirer(double retrait) {
-		solde = solde - retrait;
+		this.solde -= retrait;
 	}
 	
 	public void afficher() {

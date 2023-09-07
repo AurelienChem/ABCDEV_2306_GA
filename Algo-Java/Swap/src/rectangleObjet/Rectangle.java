@@ -1,10 +1,7 @@
 package rectangleObjet;
 
-import java.util.Scanner;
-
 public class Rectangle {
-	
-	Scanner sc = new Scanner(System.in);
+
 	
 	double longueur;
 	double largeur;
@@ -31,8 +28,8 @@ public class Rectangle {
 	}
 	
 	public double surface() {
-		 double perimetre = this.longueur*this.largeur;
-		return perimetre;	
+		 double surface = this.longueur*this.largeur;
+		return surface;	
 	}
 	
 	public void afficher() {
