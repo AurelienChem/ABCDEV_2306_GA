@@ -9,19 +9,19 @@ public class Domino {
 	
 	public Domino() {
 		
-		int face1 = 0;
-		int face2 = 0;
-		int face3 = 0;
-		int face4 = 0;
+		face1 = 0;
+		face2 = 0;
+		face3 = 0;
+		face4 = 0;
 		
 	}
 	
 	public Domino(int _face1, int _face2, int _face3, int _face4) {
 		
-		int face1 = 0 + _face1/_face1*(int)(Math.random() * ((6 - 0) + 1));
-		int face2 = 0 + _face2/_face2*(int)(Math.random() * ((6 - 0) + 1));
-		int face3 = 0 + _face3/_face3*(int)(Math.random() * ((6 - 0) + 1));
-		int face4 = 0 + _face4/_face4*(int)(Math.random() * ((6 - 0) + 1));
+		face1 = 0 + (int)(Math.random() * ((_face1 - 0) + 1));
+		face2 = 0 + (int)(Math.random() * ((_face2 - 0) + 1));
+		face3 = 0 + (int)(Math.random() * ((_face3 - 0) + 1));
+		face4 = 0 + (int)(Math.random() * ((_face4 - 0) + 1));
 		
 	}
 	
@@ -29,42 +29,42 @@ public class Domino {
 		
 		int affichePoints1 = this.face1;
 		
-		return affichePoints1();
+		return affichePoints1;
 	}
 	
 	public int affichePoints2() {
 		
 		int affichePoints2 = this.face2;
 		
-		return affichePoints2();
+		return affichePoints2;
 	}
 	
 	public int affichePoints3() {
 		
 		int affichePoints3 = this.face3;
 		
-		return affichePoints3();
+		return affichePoints3;
 	}
 	
 	public int affichePoints4() {
 		
 		int affichePoints4 = this.face4;
 		
-		return affichePoints4();
+		return affichePoints4;
 	}
 	
 	public int valeur1() {
 		
 		int valeur1 = this.face1 + this.face2;
 		
-		return valeur1();
+		return valeur1;
 	}
 	
 	public int valeur2() {
 		
 		int valeur2 = this.face3 + this.face4;
 		
-		return valeur2();
+		return valeur2;
 	}
 	
 	public boolean coteACote() {
