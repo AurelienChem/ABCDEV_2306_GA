@@ -69,7 +69,7 @@ public class Animal {
 	}
 	
 	public void afficherAnimal() {
-		System.out.println("Le " + this.nomEspece + " est une espece qui " + this.bruitCri + ", qui se déplace en " + this.deplacement +  " et qui mange du " + this.nourriture);
+		System.out.println("\n" + "Le " + this.nomEspece + " est une espece qui " + this.bruitCri + ", qui se déplace en " + this.deplacement +  " et qui mange du " + this.nourriture);
 	}
 	
 }
