@@ -25,12 +25,8 @@ public class Herbivore extends Animal {
 	}
 	
 	public void afficherHerbivore() {
-		System.out.println(this.nomFamille + " est un animal de cette catégorie");
-	}
-	
-	public void afficherTout() {
 		super.afficherAnimal();
-		afficherHerbivore();
+		System.out.println(this.nomFamille + " est un animal de cette catégorie");
 	}
 
 }
