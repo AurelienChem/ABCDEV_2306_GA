@@ -39,9 +39,21 @@ public class Labrador extends Chien {
 		System.out.println(this.nomRace1 + " est un chien qui aide les aveugles et " + this.nomRace2 + " est un chien qui aime jouer");
 	}
 	
+	public void afficherDeplacementLabrador() {
+		
+		if(Math.random() < 0.5) {
+			System.out.println(this.nomRace1 + " ne se déplace pas");
+		}
+		
+		else {
+			System.out.println(this.nomRace1 + " se deplace");
+		}
+	}
+	
 	public void afficherTout() {
 		super.afficherChien();
 		afficherLabrador();
+		afficherDeplacementLabrador();
 	}
 
 }
