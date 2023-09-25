@@ -2,13 +2,13 @@ package jeuDeCartesObjet;
 
 public class Personnage {
 	
-	protected String nom;
-	protected int puissance;
-	protected int defense;
-	protected String pouvoir;
-	protected String famille;
-	protected String description;
-	protected String element;
+	private String nom;
+	private int puissance;
+	private int defense;
+	private String pouvoir;
+	private String famille;
+	private String description;
+	private String element;
 	
 	public Personnage() {
 		
@@ -30,8 +30,6 @@ public class Personnage {
 	public Personnage(String _nom, int _puissance, int _defense, String _pouvoir) {
 		
 		// Constructeur avec paramètres
-		
-		System.out.println("Creation d'un objet personnage avec le constructeur avec parametres");
 		
 		nom = _nom;
 		puissance = _puissance;
@@ -120,6 +118,6 @@ public class Personnage {
 	}
 	
 	public void afficherPersonnage() {
-		System.out.println("\n" + "Nom: " + this.nom + ", Puissance: " + this.puissance + ", Defense: " + this.defense +  ", Pouvoir: " + this.pouvoir + ", Famille: " + this.famille + ", Description: " + this.description + ", Element: " + this.element);
+		System.out.println("Nom: " + this.nom + ", Puissance: " + this.puissance + ", Defense: " + this.defense +  ", Pouvoir: " + this.pouvoir + ", Famille: " + this.famille + ", Description: " + this.description + ", Element: " + this.element);
 	}
 }
