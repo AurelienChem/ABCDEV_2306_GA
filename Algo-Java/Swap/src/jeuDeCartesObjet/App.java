@@ -1,7 +1,10 @@
 package jeuDeCartesObjet;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -70,24 +73,42 @@ public class App {
 			
 		    Random randomJoueur = new Random();
 		    Random randomToto = new Random();
-		    
-		    int nextRandom = randomJoueur.nextInt(10); // 10 Parce que 10 cartes differentes
-		    
+		    int i;
+		    int nextRandom = randomJoueur.nextInt(10);// 10 Parce que 10 cartes differentes
 	        Set<Integer> validate = new HashSet<>(); // Permet de tirer une carte sans remise
-
+	        String[] outputArray = new String[5];
+	        int[] outputID = new int[5];
 	        validate.add(nextRandom);
+	        int choixJoueur;
 	        
-	        for (int i = 0; i < 5; i++) { // 5 Car on veut choisir 5 cartes parmi les 10
+	        for (i = 0; i < 5; i++) { // 5 Car on veut choisir 5 cartes parmi les 10
 	        	
 	            while(validate.contains(nextRandom)) {
 	                nextRandom = randomJoueur.nextInt(10);
+	                
+		            outputID[i] = nextRandom;
+		            outputArray[i] = carte[nextRandom];
 	            }
+	            
 	            validate.add(nextRandom);
-	            System.out.println(carte[nextRandom]); // boucle pour le tirage
+	            
+	            System.out.println(outputArray[i] + ", " + outputID[i]); // boucle pour le tirage
 	       
 	        }
-	
-	        System.out.println("\nPseudo : Toto, Date, 2000-01-01\n");
+			
+			System.out.println("Quelle carte prenez vous parmi celles piochees ?");
+			choixJoueur = sc.nextInt();
+			
+			if (validate.equals(choixJoueur)) {
+			    System.out.println("The number has been found");
+			    return;
+			}
+			else {
+				System.out.println("Saisie invalide");
+			}
+			
+	        
+	        /* System.out.println("\nPseudo : Toto, Date, 2000-01-01\n");
 	        
 		    int nextRandom1 = randomToto.nextInt(10); // 10 Parce que 10 cartes differentes
 		    
@@ -100,11 +121,11 @@ public class App {
 	            while(validate1.contains(nextRandom1)) {
 	                nextRandom1 = randomToto.nextInt(10);
 	            }
+	            
 	            validate1.add(nextRandom1);
 	            System.out.println(carte[nextRandom1]); // boucle pour le tirage
 	       
-	        }
-	        
+	        } */
 	        
 			sc.close();
 		}
