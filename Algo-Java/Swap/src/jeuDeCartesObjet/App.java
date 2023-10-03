@@ -71,62 +71,41 @@ public class App {
 			
 			String[] carte = {"Ricko", "Mike", "Mario", "Zeldu", "Chief", "Snake", "Freeman", "Bellic", "Drake", "Peach"};
 			
-		    Random randomJoueur = new Random();
-		    Random randomToto = new Random();
-		    int i;
-		    int nextRandom = randomJoueur.nextInt(10);// 10 Parce que 10 cartes differentes
+			int j = 0;
+		    Random randomJoueurToto = new Random();// 1 parmi 10
+		    int nextRandom = randomJoueurToto.nextInt(10);
+		    int nextRandom1 = 0;// 10 Parce que 10 cartes differentes
 	        Set<Integer> validate = new HashSet<>(); // Permet de tirer une carte sans remise
-	        String[] outputArray = new String[5];
-	        int[] outputID = new int[5];
+	        String[] outputArray = new String[10];
 	        validate.add(nextRandom);
-	        int choixJoueur;
+	        String choixJoueur;
 	        
-	        for (i = 0; i < 5; i++) { // 5 Car on veut choisir 5 cartes parmi les 10
+	        for (int i = 0; i < 5; i++) { // 5 Car on veut choisir 5 cartes parmi les 10
 	        	
 	            while(validate.contains(nextRandom)) {
-	                nextRandom = randomJoueur.nextInt(10);
-	                
-		            outputID[i] = nextRandom;
-		            outputArray[i] = carte[nextRandom];
+	                nextRandom = randomJoueurToto.nextInt(10);
+	                nextRandom1 = randomJoueurToto.nextInt(10 - i);
 	            }
 	            
-	            validate.add(nextRandom);
 	            
-	            System.out.println(outputArray[i] + ", " + outputID[i]); // boucle pour le tirage
-	       
+	            validate.add(nextRandom);
+	            outputArray[i] = carte[nextRandom];
+				outputArray[j] = carte[nextRandom1];
+	            
+	            System.out.println(outputArray[i]); 
+	            System.out.println(outputArray[j]);// boucle pour le tirage
 	        }
 			
 			System.out.println("Quelle carte prenez vous parmi celles piochees ?");
-			choixJoueur = sc.nextInt();
+			choixJoueur = sc.next();
 			
-			if (validate.equals(choixJoueur)) {
+			if (Arrays.asList(outputArray).contains(choixJoueur)) {
 			    System.out.println("The number has been found");
-			    return;
 			}
 			else {
 				System.out.println("Saisie invalide");
 			}
 			
-	        
-	        /* System.out.println("\nPseudo : Toto, Date, 2000-01-01\n");
-	        
-		    int nextRandom1 = randomToto.nextInt(10); // 10 Parce que 10 cartes differentes
-		    
-	        Set<Integer> validate1 = new HashSet<>(); // Permet de tirer une carte sans remise
-
-	        validate1.add(nextRandom1);
-	        
-	        for (int j = 0; j < 5; j++) { // 5 Car on veut choisir 5 cartes parmi les 10
-	        	
-	            while(validate1.contains(nextRandom1)) {
-	                nextRandom1 = randomToto.nextInt(10);
-	            }
-	            
-	            validate1.add(nextRandom1);
-	            System.out.println(carte[nextRandom1]); // boucle pour le tirage
-	       
-	        } */
-	        
 			sc.close();
 		}
 }
