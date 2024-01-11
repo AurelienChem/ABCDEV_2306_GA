@@ -12,11 +12,11 @@
             saisie = Console.ReadLine();
             nombre = int.Parse(saisie);
 
-            Console.WriteLine("nombre " + nombre + " increment " + Type(nombre));
+            Console.WriteLine("nombre " + nombre + " increment " + Nbpremier(nombre));
 
         }
 
-        public static int Type(int nombre) {
+        public static int Nbpremier(int nombre) {
 
             int i;
             int j = 0;
