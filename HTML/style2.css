@@ -1,26 +1,118 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: 'Channel';
+  src: url(channel-webfont.ttf);
+}
+
+body {
+  display: grid;
+  background-image: url("bg_motif.gif");
+  grid-template-columns: repeat(3, 1fr);
+}
 
 nav {
-    background-color: black;
-    padding: 15px;
+  background-color: black;
+  padding: 15px;
+  grid-column: 1/4;
 }
 
-ul{
-    text-align: right;
+ul {
+  text-align: right;
 }
 
-  li {
-    display: inline;
-    padding: 15px;
-    background-color: black;
-    color: white;
-  }
+li {
+  display: inline;
+  padding: 15px;
+  padding-left: 65px;
+  background-color: black;
+  color: white;
+  font-family: 'Channel';
+}
 
-  li:hover {
-    color: red;
-  }
+li:hover {
+  color: red;
+}
+
+.ruban {
+  position: absolute;
+  top: 49px; left: 200px;
+  z-index: 2;
+}
+
+hr {
+  grid-column: 1/4;
+  border: 1px solid white;
+  z-index: 1;
+}
+
+main {
+  background-color: rgba(255, 255, 255, 0.1);
+  grid-column: 2/3;
+  box-shadow: 0 0 30px black;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.raisin {
+  grid-column: 2/3;
+  box-shadow: 0 0 20px white;
+}
+
+.sequi, .cavea, .caveb, .vignerona, .vigneronb, .produitsa, .produitsb {
+  grid-column: 2/3;
+  font-family: Comic Sans MS;
+}
+
+.sequi {
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 0 20px white;
+  color: brown;
+  font-size: 120%;
+}
+
+.barre {
+  margin-top: 10px;
+  margin-left: -2%;
+  margin-right: -2%;
+}
+
+.vin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cavea{
+  font-family: 'Channel';
+}
+
+.cavea, .caveb {
+  grid-column: 1/2;
+  color: white;
+}
+
+.vignerona{
+  font-family: 'Channel';
+}
+
+.vignerona, .vigneronb {
+  grid-column: 2/3;
+  color: white;
+}
+
+.produitsa{
+  font-family: 'Channel';
+}
+
+.produitsa, .produitsb {
+  grid-column: 3/4;
+  color: white;
+}
+
