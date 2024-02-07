@@ -52,6 +52,7 @@ nav > ul li:hover .menu{
   gap: 1px;
   text-align: left;
   border: 1px solid white;
+  z-index: 1;
 }
 
 .scroll {
@@ -130,7 +131,6 @@ main {
 }
 
 .cavea, .caveb {
-  grid-column: 1/2;
   color: white;
   text-align: center;
 }
@@ -155,7 +155,6 @@ main {
 }
 
 .vignerona, .vigneronb {
-  grid-column: 2/3;
   color: white;
   text-align: center;
 }
@@ -180,7 +179,6 @@ main {
 }
 
 .produitsa, .produitsb {
-  grid-column: 3/4;
   color: white;
   text-align: center;
 }
@@ -222,7 +220,7 @@ main {
   margin-top: 15px;
 }
 
-.selectionb, .selectionc {
+.selectionb  {
   font-family: Comic Sans MS;
   font-weight: bold;
   background-color: rgb(78, 78, 78);
@@ -246,7 +244,6 @@ main {
   background-color: rgb(78, 78, 78);
   text-align: center;
   margin-top: 15px;
-  grid-column: 2/4;
 }
 
 .verre {
@@ -317,4 +314,145 @@ footer {
   margin-left: -60px;
   padding-left: 60px;
   right: 280px;
+  
+}
+
+@media only screen and (max-width: 1130px) {
+  
+ul {
+  text-align: center;
+}
+.ruban {
+ display: none;
+}
+
+.vin {
+  display: inline;
+}
+
+.cave {
+  border: 5px solid white;
+  border-bottom: none;
+  background-position-x: 60%;
+  background-position-y: 10%;
+  padding: 3%;
+}
+
+.caveb {
+  text-align: justify;
+  text-align-last: center;
+}
+
+.vigneron {
+  border: 5px solid white;
+  border-bottom: none;
+  padding: 3%;
+  background-position-x: 60%;
+  background-position-y: 10%;
+  padding: 3%;
+}
+
+.vigneronb {
+  text-align: justify;
+  text-align-last: center;
+}
+
+
+.produits {
+  border: 5px solid white;
+  padding: 3%;
+  background-position-x: 60%;
+  background-position-y: 10%;
+  padding: 3%;
+}
+
+.produitsb {
+    text-align: justify;
+    text-align-last: center;
+  }
+
+.bouton {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+}
+
+.dessous {
+  position: relative;
+  right: 120px;
+}
+
+
+.barrea {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.selection {
+  display: inline-block;
+  width: 33%;
+  margin-top: -1%;
+  border: 5px solid white;
+}
+
+.selectiona {
+  padding-top: 0;
+  padding-top: 1%;
+}
+
+.selectionb  {
+  background-position: 21% 50%;
+  padding-left: 35%;
+}
+
+.barrefin {
+  display: none;
+}
+
+.verre {
+  display: none;
+}
+
+.cadeau {
+  display: inline-block;
+  width: 66.5%;
+  margin-top: 0;
+  padding-bottom: 20%;
+  border: 5px solid white;
+}
+
+.cadeaua {
+  padding-top: 0;
+}
+
+.cadeaub {
+  position: initial;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: justify;
+  text-align-last: center;
+  padding-bottom: 7.8%;
+  padding-left: -1%;
+  }
+
+.sequia {
+  left: 23%;
+}
+
+.bouton2 {
+  position: relative;
+  bottom: 30px;
+  left: 250px;
+}
+
+.dessous {
+  font-size: 120%;
+  left: 3%;
+  padding-top: 1%;
+}
+
+.grappe {
+  display: none;
+}
+
 }
