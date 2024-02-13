@@ -7,7 +7,15 @@
 
 @font-face {
   font-family: 'Channel';
-  src: url(channel-webfont.ttf);
+  src: url(channel-webfont.ttf) format("truetype");
+  src: url(channel-webfont.woff);
+}
+
+@font-face {
+  font-family:'opendyslexie';
+  src: url(opendyslexic-regular-webfont.woff2);
+  src: url(opendyslexic-regular-webfont.woff);
+  src: url(opendyslexic-regular-webfont.svg) format("svg");
 }
 
 body {
@@ -27,12 +35,12 @@ ul {
 }
 
 li {
+  font-family: 'Channel';
   display: inline-block;
   padding-left: 45px;
   padding-right: 45px;
   background-color: black;
   color: white;
-  font-family: 'Channel';
 }
 
 li:hover {
@@ -201,6 +209,7 @@ main {
   transform: rotate(0);
   transition-property: all;
   transition-duration: 0.5s;
+  backface-visibility: hidden;
 }
 
 .bouton:hover, .bouton2:hover {
@@ -286,6 +295,10 @@ main {
   position: relative;
   bottom: 200px; left: 400px;
   margin-bottom: -185px;
+  transform: rotate(0);
+  transition-property: all;
+  transition-duration: 0.5s;
+  backface-visibility: hidden;
 }
 
 .barreb {
@@ -384,6 +397,7 @@ ul {
 .bouton {
   margin-left: auto;
   margin-right: auto;
+  padding: 10px;
   left: 0;
 }
 
