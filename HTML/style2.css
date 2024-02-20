@@ -19,9 +19,7 @@
 }
 
 body {
-  display: grid;
   background-image: url("bg_motif.gif");
-  grid-template-columns: repeat(3, 1fr);
 }
 
 nav {
@@ -75,8 +73,8 @@ nav > ul li:hover .menu{
 }
 
 .ruban {
-  position: relative;
-  bottom: 27px; left: 200px;
+  position: absolute;
+  top: 52px; left: 20px;
   z-index: 1;
 }
 
@@ -86,6 +84,7 @@ hr {
   z-index: 0;
 }
 
+
 main {
   background-color: rgba(255, 255, 255, 0.1);
   grid-column: 2/3;
@@ -94,6 +93,8 @@ main {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 90px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .raisin {
@@ -321,7 +322,7 @@ footer {
   background-image: url(footer-bg.png);
   background-repeat: no-repeat;
   background-position: bottom;
-  margin: -3% -3.2% -10% -3.2%;
+  margin: -3% -10% -9.5% -10%;
   padding-bottom: 3%;
   padding-top: 3%;
 }
@@ -345,6 +346,10 @@ footer {
 }
 
 @media only screen and (max-width: 1130px) {
+
+header {
+  display: none;
+}
   
 ul {
   text-align: center;
