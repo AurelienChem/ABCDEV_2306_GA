@@ -3,7 +3,7 @@ services:
   apache:
     image: httpd
     container_name: aurelienchem-httpd
-    restart: always
+    restart: unless-stopped
     volumes:
       - './www/:/usr/local/apache2/htdocs'
     ports:
