@@ -1,0 +1,29 @@
+* {
+    font-family: Verdana;
+}
+
+body {
+    border: 1px solid blue;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#age, #prenom, #valider, #vider {
+    border: 1px solid blue;
+}
+
+.bouton {
+    display: inline;
+}
+
+.marge {
+    margin-top: 2%;
+}
+
+.phrase {
+    display: inline;
+}
+
+.colorblue{
+    color: blue;
+}
