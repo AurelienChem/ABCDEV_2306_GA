@@ -4,7 +4,7 @@ valide.addEventListener("click", valider);
 const vide = document.querySelector("#vider");
 vide.addEventListener("click", vider);
 
-function valider() {;
+function valider() {
     let affichagePrenom = document.getElementById("prenom").value;
     let affichageAge = document.getElementById("age").value;
 
