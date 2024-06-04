@@ -4,10 +4,10 @@ const valide = document.querySelector("#calculer");
 valide.addEventListener("click", calculer);
 
 const barreHRA = document.querySelector("#calculer");
-valide.addEventListener("click", barreA);
+valide.addEventListener("click", barreA, {once:true}); /* {once:true} évite de dupliquer les barres hr */
 
 const barreHRB = document.querySelector("#calculer");
-valide.addEventListener("click", barreB);
+valide.addEventListener("click", barreB, {once:true}); /* {once:true} évite de dupliquer les barres hr */
 
 function barreA() {
     let barreA = document.createElement("HR");
