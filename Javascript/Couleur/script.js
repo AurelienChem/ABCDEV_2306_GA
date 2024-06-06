@@ -16,15 +16,12 @@ e.addEventListener("click", changerVertHex);
 const f = document.querySelector("#bleu2");
 f.addEventListener("click", changerBleuHex);
 
-/* const add = document.querySelectorAll(".coul");
-for (let i = 0; i < add.length; i++) {
-    add[i].addEventListener("input", function() {
+/* const adde = document.querySelectorAll(".coul");
+for (let i = 0; i < adde.length; i++) {
+    adde[i].addEventListener("input", function() {
         let valeursSaisie = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
         if (estHexa(valeursSaisie)) {
             document.getElementById("laboite").style.backgroundColor = "#" + valeursSaisie;
-        }
-        else {
-            document.getElementById("laboite").style.backgroundColor = "black"
         }
     });
 }
@@ -41,17 +38,47 @@ function estHexa(_aTest) {
     return retour;
 } */
 
-const add = document.querySelectorAll(".coul");
+/* const add = document.querySelectorAll(".coul");
 for (let i = 0; i < add.length; i++) {
     add[i].addEventListener("keydown", function(e) {
         if((e.keyCode >= 65  && e.keyCode <= 70) || (e.keyCode >= 96  && e.keyCode <= 105) || e.keyCode === 8){
-            document.getElementById("laboite").style.backgroundColor = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
+            // document.getElementById("laboite").style.backgroundColor = "#" + document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
         }
             else {
             e.preventDefault();
         }
     }
 )
+} */
+
+
+const adde = document.querySelectorAll(".coul");
+for (let i = 0; i < adde.length; i++) {
+    adde[i].addEventListener("blur", function() {
+
+        if(verifHex(adde[i]) == true) {
+            let valeursSaisie = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
+            document.getElementById("laboite").style.backgroundColor = "#" + valeursSaisie;
+        }
+        else {
+            adde[i].value = "";
+            adde[i].focus();
+            //alert("Veuillez saisir un code hexadécimal");
+            console.log("Veuillez saisir un code hexadécimal");
+        }
+    });
+}
+
+function verifHex(_chaine) {
+    let maChaine = (_chaine.value).toUpperCase();
+    let maRegex = /^[A-F0-9]{2}$/;
+    if (maRegex.test(maChaine)) {
+        console.log("nombre hexa vrai")
+        return true;
+    } else {
+        console.log("Veuillez recommencer, nombre hexa faux")
+        return false;
+    }
 }
 
 
