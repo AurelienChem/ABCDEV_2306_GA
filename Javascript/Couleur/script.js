@@ -52,22 +52,37 @@ for (let i = 0; i < add.length; i++) {
 } */
 
 
-const adde = document.querySelectorAll(".coul");
-for (let i = 0; i < adde.length; i++) {
-    adde[i].addEventListener("blur", function() {
+const adde = document.querySelectorAll(".coul").forEach(
+element => { element.addEventListener("blur", function () {
 
-        if(verifHex(adde[i]) == true) {
-            let valeursSaisie = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
-            document.getElementById("laboite").style.backgroundColor = "#" + valeursSaisie;
-        }
-        else {
-            adde[i].value = "";
-            adde[i].focus();
-            //alert("Veuillez saisir un code hexadécimal");
-            console.log("Veuillez saisir un code hexadécimal");
-        }
-    });
-}
+
+    if(verifHex(element) == true) {
+                    let valeursSaisie = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
+                    document.getElementById("laboite").style.backgroundColor = "#" + valeursSaisie;
+                }
+                else {
+                    element.value = "";
+                    element.focus();
+                    //alert("Veuillez saisir un code hexadécimal");
+                    console.log("Veuillez saisir un code hexadécimal"); }
+                } ) } )
+
+
+// for (let i = 0; i < adde.length; i++) {
+//     adde[i].addEventListener("blur", function() {
+
+//         if(verifHex(adde[i]) == true) {
+//             let valeursSaisie = document.getElementById("rouge").value + document.getElementById("vert").value  + document.getElementById("bleu").value
+//             document.getElementById("laboite").style.backgroundColor = "#" + valeursSaisie;
+//         }
+//         else {
+//             adde[i].value = "";
+//             adde[i].focus();
+//             //alert("Veuillez saisir un code hexadécimal");
+//             console.log("Veuillez saisir un code hexadécimal");
+//         }
+//     });
+// }
 
 function verifHex(_chaine) {
     let maChaine = (_chaine.value).toUpperCase();
