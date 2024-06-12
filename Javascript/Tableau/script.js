@@ -3,7 +3,6 @@ const people = ['Mike Dev', 'John Makenzie', 'Léa Grande'];
 let list = document.getElementById("prenomnom");
 let list2 = document.getElementById("test");
 
-
 for (i = 0; i < people.length; i++) {
     let li = document.createElement('li');
     li.textContent = people[i];
@@ -62,6 +61,11 @@ function ajouter() {
     let affichagePrenom = document.getElementById("prenom").value;
     let affichageNom = document.getElementById("nom").value;
 
+    let myRegexPrenom = /^[a-zA-Z]+$/.test(document.getElementById("prenom").value);
+    let myRegexNom = /^[a-zA-Z]+$/.test(document.getElementById("nom").value);
+
+if(myRegexPrenom === true && myRegexNom === true && affichagePrenom.length > 1 && affichageNom.length > 1 && people.indexOf(affichagePrenom.toLowerCase() + " " + affichageNom.toLowerCase()) === -1) {
+
     for (i = 0; i < 1; i++) {
         let li = document.createElement('li');
         li.textContent = document.getElementById("prenom").value + ' ' + document.getElementById("nom").value;
@@ -70,34 +74,41 @@ function ajouter() {
     
     document.getElementById("ajout").textContent = affichagePrenom + " " + affichageNom + " ajouté !";
 
-    let theRow = document.getElementById('list').insertRow(1);
+    let theRow = document.getElementById('list').insertRow(); /* insertRow(1) les affiches au début du tableau */
     theRow.insertCell().textContent =  affichagePrenom;
     theRow.insertCell().textContent = affichageNom;
     theRow.insertCell().textContent = affichagePrenom.toLowerCase() + "." + affichageNom.toLowerCase() + "@example.com";
-    people.push(affichagePrenom.toLowerCase() + "." + affichageNom.toLowerCase())
+
 
     let supprX = theRow.insertCell();
 
     supprX.addEventListener("click", function(){
         supprimer2(supprX)});
 
+    supprX.addEventListener("click", function(){
+        supprimer3(supprX)});
+
     supprX.textContent = 'X';
     supprX.style.fontWeight = 'bold';
 
-    people.push(affichagePrenom.toLowerCase() + "." + affichageNom.toLowerCase())
-
+    people.push(affichagePrenom.toLowerCase() + " " + affichageNom.toLowerCase())
     for(let i = 0; i < people.length ; i++) {
         theRow.setAttribute('id', i/2 + 1)
     }
 }
 
-function supprimer2(_id) {
-    _id.closest('tr').remove();
-
+else if(people.indexOf(affichagePrenom.toLowerCase() + " " + affichageNom.toLowerCase()) !== -1) {
+    document.getElementById("ajout").textContent = 'Le nom et le prénom sont déjà présents.'
 }
 
-console.log(people);
+else {
+    document.getElementById("ajout").textContent = 'Les saisies ne sont pas valides.'
+}
+}
 
+function supprimer2(_id) {
+    _id.closest('tr').remove();
+}
 
 
 
