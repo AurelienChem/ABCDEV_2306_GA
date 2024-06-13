@@ -77,7 +77,7 @@ if(myRegexPrenom === true && myRegexNom === true && affichagePrenom.length > 1 &
     let theRow = document.getElementById('list').insertRow(); /* insertRow(1) les affiches au début du tableau */
     theRow.setAttribute('id', index)
     index++
-    theRow.insertCell().textContent =  affichagePrenom;
+    theRow.insertCell().textContent = affichagePrenom;
     theRow.insertCell().textContent = affichageNom;
     theRow.insertCell().textContent = affichagePrenom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + "." + affichageNom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + "@example.com";
 
