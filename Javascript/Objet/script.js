@@ -26,12 +26,14 @@ function modifier() {
             myEmployee.lastname = document.getElementById('name1').value;
             myEmployee.firstname = document.getElementById('name2').value;
             myEmployee.birthday = document.getElementById('name3').value;
-            
             myEmployee.salary = 2150;
             myEmployee.email = setEmail()
+            
             document.getElementById("objet").appendChild(monItem).textContent = key;
             document.getElementById("objet2").appendChild(monItem2).textContent = myEmployee[key];
     }
+
+    console.log(myEmployee)
 }
 
 function setEmail(){
