@@ -1,24 +1,30 @@
-let data
+/*let data
 
 fetch('./data.json')
     .then((response) => response.json())
-    .then((json) => data = json);
+    .then((json) => data = json);*/
+
+let response = await fetch('./data.json');
+let data = await response.json();
+
+const name1 = document.getElementById('name1');
+const password1 = document.getElementById('password1');
+const confirmer = document.getElementById('confirmer');
 
 document.querySelector("#connecter").addEventListener("click", connexion);
 
 function connexion() {
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
 
-        if(data[i].firstname + "." + data[i].lastname === document.getElementById('name1').value) {
-            temp = data[i].firstname + "." + data[i].lastname
+        let temp = data[i].firstname + "." + data[i].lastname
+        
+        if(temp.toLowerCase() === name1.value && data[i].password === password1.value) {
 
-            if(temp === document.getElementById('name1').value && data[i].password === document.getElementById('password1').value) {
-
-            document.getElementById('confirmer').textContent = 'Vous êtes connecté';
+            confirmer.textContent = 'Vous êtes connecté';
+            return;
         }
-            else {
-            document.getElementById('confirmer').textContent = 'Mot de passe incorrect';
-        }   
+        else  {
+            confirmer.textContent = 'Mot de passe incorrect';
+        }
     }
-}
 }
