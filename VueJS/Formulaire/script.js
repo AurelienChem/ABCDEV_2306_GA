@@ -34,7 +34,7 @@ const app = {
                 }
             }
             else {
-                this.bonjour = 'Bonjour, désolé, le prénom est non-valide'
+                this.bonjour = 'Bonjour, désolé, le prénom est invalide'
                 this.phrase = ''
                 this.retraite = ''
             }
