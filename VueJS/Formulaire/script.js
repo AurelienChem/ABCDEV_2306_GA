@@ -5,7 +5,9 @@ const app = {
             compteur: 16,
             bonjour: '',
             phrase: '',
-            retraite: ''
+            retraite: '',
+            adresses: ["mapremiere adresse","reseidence secondaire" ],
+            liste:[ {fruit: "pomme", legume: "brocolis"}, {fruit: "cheesecake", legume: "entrecôte"}]
         }
     },
 

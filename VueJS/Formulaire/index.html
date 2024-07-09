@@ -14,6 +14,12 @@
     <button @click="valider">Valider</button>
     <button @click="vider">Vider</button>
     <hr />
+    <ul>
+        <li v-for="adresse of adresses">{{ adresse }}</li>
+    </ul>
+    <ul>
+        <li v-for="element of liste">{{ element.legume }}</li>
+    </ul>
     <p>{{ bonjour }}</p>
     <p>{{ phrase }}</p>
     <p>{{ retraite }}</p>
