@@ -5,8 +5,6 @@ let data = await response.json();
 
 for(const element in data) {
 
-    console.log(data)
-
     let row = document.createElement('tr');
     let monItem1 = document.createElement("td");
     let monItem2 = document.createElement("td");
