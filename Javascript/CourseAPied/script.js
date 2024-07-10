@@ -3,26 +3,40 @@ let data = await response.json();
 
 let minutes = data.sort((a, b) => a.temps - b.temps); // permet de trier par ordre croissant les objects littéraux par rapport au temps (/!\ doit être en dehors de la boucle for)
 
-for(const element in data) {
-    let row = document.createElement('tr');
-    let monItem1 = document.createElement("td");
-    let monItem2 = document.createElement("td");
-    let monItem3 = document.createElement("td");
+function total() {
+    for (const element in data) {
+        let row = document.createElement('tr');
+        let monItem1 = document.createElement("td");
+        let monItem2 = document.createElement("td");
+        let monItem3 = document.createElement("td");
+        let monItem4 = document.createElement("td");
+        let monItem5 = document.createElement("td");
 
+        document.getElementById("objet2").appendChild(monItem1).textContent = data[element].pays;
 
-    document.getElementById("objet2").appendChild(monItem1).textContent = data[element].pays;
-    document.getElementById("objet2").appendChild(monItem2).textContent = data[element].nom;
-    document.getElementById("objet2").appendChild(monItem3).textContent = ((data[element].temps/60).toFixed(2)).toString().replace(".","m");
-    // ToFixed() permet d'arrondir à la virgule souhaité
-    // toString() est nécessaire ici pour utiliser replace() car data[element].temps est considéré comme un 'int' et non un 'string'
+        let results = data[element].nom.split(' ');
+        document.getElementById("objet2").appendChild(monItem2).textContent = results[0];
+        document.getElementById("objet2").appendChild(monItem3).textContent = results[1];
 
-    row.append(monItem1, monItem2, monItem3);
-    document.getElementById("objet2").appendChild(row);
+        document.getElementById("objet2").appendChild(monItem4).textContent = ((data[element].temps / 60).toFixed(2)).toString().replace(".", "m");
+
+        let plus = "+";
+        document.getElementById("objet2").appendChild(monItem5).textContent = plus.concat(data[element].temps - data[0].temps + "s") //concat() est nécessaire ici pour éviter de concatener avec "+" même entre guillemets
+        // ToFixed() permet d'arrondir à la virgule souhaité
+        // toString() est nécessaire ici pour utiliser replace() car data[element].temps est considéré comme un 'int' et non un 'string'
+
+        row.append(monItem1, monItem2, monItem3, monItem4, monItem5);
+        document.getElementById("objet2").appendChild(row);
+    }
 }
+
+total()
+
+/////////////////////
 
 const cochage = document.querySelectorAll('#Allemagne, #Autriche, #Belgique, #Espagne, #France, #Grèce, #Italie, #Pays-Bas, #Pologne, #Portugal');
 
-for(const element of cochage){
+for (const element of cochage) {
     element.addEventListener("change", cocher);
 }
 // Le for of est nécessaire pour les querySelectorAll
@@ -30,24 +44,50 @@ for(const element of cochage){
 
 function cocher() {
 
-    console.log(this.checked)
-    
-    for (let i = 0; i < data.length; i++) {
-        if (this.checked) {
-            let row = document.createElement('tr');
-            let monItem1 = document.createElement("td");
-            let monItem2 = document.createElement("td");
-            let monItem3 = document.createElement("td");
+    while (document.querySelector('#objet2').children.length > 0) {
+        document.querySelector('#objet2').children[0].remove();
 
-            document.getElementById("objet2").appendChild(monItem1).textContent = data[i].pays;
-            document.getElementById("objet2").appendChild(monItem2).textContent = data[i].nom;
-            document.getElementById("objet2").appendChild(monItem3).textContent = ((data[i].temps / 60).toFixed(2)).toString().replace(".", "m");
+    }
 
-            row.append(monItem1, monItem2, monItem3);
-            document.getElementById("objet2").appendChild(row);
+    let incr = 0;
+    for (const element of cochage) {
+      if (element.checked) {
+        incr++;
+      }
+    }
+
+    if (incr > 0) {
+        for (let i = 0; i < data.length; i++) {
+            if (cochage[i].checked) {
+
+                let row = document.createElement('tr');
+                let monItem1 = document.createElement("td");
+                let monItem2 = document.createElement("td");
+                let monItem3 = document.createElement("td");
+                let monItem4 = document.createElement("td");
+                let monItem5 = document.createElement("td");
+
+                monItem1.textContent = data[i].pays;
+
+                let results = data[i].nom.split(' ');
+                monItem2.textContent = results[0];
+                monItem3.textContent = results[1];
+
+                monItem4.textContent = ((data[i].temps / 60).toFixed(2)).toString().replace(".", "m");
+
+                let plus = "+";
+                monItem5.textContent = plus.concat(data[i].temps - data[0].temps + "s")
+
+                row.append(monItem1, monItem2, monItem3, monItem4, monItem5);
+                document.getElementById("objet2").appendChild(row);
+            }
         }
     }
+    else {
+        total();
+    }
 }
+
 
 
 /* function cocher() {
