@@ -18,7 +18,17 @@ function total() {
         document.getElementById("objet2").appendChild(monItem2).textContent = results[0];
         document.getElementById("objet2").appendChild(monItem3).textContent = results[1];
 
-        document.getElementById("objet2").appendChild(monItem4).textContent = ((data[element].temps / 60).toFixed(2)).toString().replace(".", "m");
+
+        let time = 0;
+
+        if ((data[element].temps - Math.floor(data[element].temps / 60) * 60) < 10) {
+            time = Math.floor(data[element].temps / 60) + "m" + "0" + (data[element].temps - Math.floor(data[element].temps / 60) * 60);
+        }
+        else {
+            time = Math.floor(data[element].temps / 60) + "m" + (data[element].temps - Math.floor(data[element].temps / 60) * 60);
+        }
+
+        document.getElementById("objet2").appendChild(monItem4).textContent = time;
 
         let plus = "+";
         document.getElementById("objet2").appendChild(monItem5).textContent = plus.concat(data[element].temps - data[0].temps + "s") //concat() est nécessaire ici pour éviter de concatener avec "+" même entre guillemets
@@ -51,9 +61,9 @@ function cocher() {
 
     let incr = 0;
     for (const element of cochage) {
-      if (element.checked) {
-        incr++;
-      }
+        if (element.checked) {
+            incr++;
+        }
     }
 
     if (incr > 0) {
@@ -73,7 +83,16 @@ function cocher() {
                 monItem2.textContent = results[0];
                 monItem3.textContent = results[1];
 
-                monItem4.textContent = ((data[i].temps / 60).toFixed(2)).toString().replace(".", "m");
+                let time = 0;
+
+                if ((data[i].temps - Math.floor(data[i].temps / 60) * 60) < 10) {
+                    time = Math.floor(data[i].temps / 60) + "m" + "0" + (data[i].temps - Math.floor(data[i].temps / 60) * 60);
+                }
+                else {
+                    time = Math.floor(data[i].temps / 60) + "m" + (data[i].temps - Math.floor(data[i].temps / 60) * 60);
+                }
+
+                document.getElementById("objet2").appendChild(monItem4).textContent = time;
 
                 let plus = "+";
                 monItem5.textContent = plus.concat(data[i].temps - data[0].temps + "s")
