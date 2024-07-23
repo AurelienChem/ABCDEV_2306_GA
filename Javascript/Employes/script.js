@@ -78,6 +78,12 @@ function generer() {
 
         buttonDup.addEventListener("click", duplicate);
         buttonSup.addEventListener("click", deleteBtn);
+
+               /* buttonSup.addEventListener("click", (_row) => {
+            datas.data.splice(datas.data.indexOf(element), 1);
+            row.remove();
+        }); */
+
         objet.appendChild(monItem6).appendChild(buttonDup).id = ('d' + element.id);
         objet.appendChild(monItem6).appendChild(buttonSup).id = ('s' + element.id);
 
@@ -118,9 +124,8 @@ function duplicate() {
             if (parseInt(this.id.replace('d', '')) === (k + 1)) {
 
                 let person = structuredClone(datas.data[k])
-                person.id = datas.data.length + 1; // rempalcer par recherche de l'identifiatn el plus élevé + 1
+                person.id = datas.data.length + 1;// rempalcer par recherche de l'identifiatn el plus élevé + 1
                 datas.data.push(person)
-
                 generer();
             }
         }
@@ -128,14 +133,19 @@ function duplicate() {
 
 function deleteBtn() {
     for (let k = 0; k < datas.data.length; k++) {
-
-            console.log(this.id, datas.data);
-        if (parseInt(this.id.replace('s', '')) === datas.data[k].id) {
-            //delete datas.data[k]
+        if (parseInt(this.id.replace('s', '')) === (datas.data[k].id)) {
             datas.data = datas.data.filter(x => x.id != datas.data[k].id);
-            generer();
+            for (let j = 0; j < datas.data.length; j++) {
+            if(datas.data[k].id > datas.data.length) {
+                datas.data[j].id--;
+            }
+            else {
+                datas.data[j].id = j + 1;
+            }
+        }
         }
     }
+    generer();
 }
 
 const haut = document.querySelector("#trihaut");
@@ -168,6 +178,4 @@ function triAscdec() {
     }
 
     triAsc = !triAsc; // inverse le booleén
-
-    console.log(triAsc)
 }

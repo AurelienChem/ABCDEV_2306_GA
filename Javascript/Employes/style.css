@@ -30,6 +30,7 @@ tr:nth-child(even) {
     transition: all ease .8s;
     margin: .1rem;
     padding: .2rem;
+    user-select: none;
 }
 
 .duplication {
