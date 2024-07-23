@@ -1,52 +1,100 @@
 let response = await fetch('./employees.json');
 let datas = await response.json();
 
-let i = 1;
-for (const element of datas.data) {
+function leTotal() {
+        let monItem7 = document.createElement("td"); // total d'éléments
+        let monItem8 = document.createElement("td"); // cellule fusionnée (prend la place de 2 cellules)
+        monItem8.colSpan = 2;
+        let monItem10 = document.createElement("td"); // Total des salaires
+        let monItem11 = document.createElement("td"); // cellule fusionnée (prend la place de 2 cellules)
+        monItem11.colSpan = 2;
 
-    let row = document.createElement('tr');
+        let objets = document.getElementById("objet2");
 
-
-    row.setAttribute('id', 'p' + i)
-
-    let monItem1 = document.createElement("td");
-    let monItem2 = document.createElement("td");
-    let monItem3 = document.createElement("td");
-    let monItem4 = document.createElement("td");
-    let monItem5 = document.createElement("td");
-    let monItem6 = document.createElement("td");
-
-    let objet = document.getElementById("objet2");
-
-    objet.appendChild(monItem1).textContent = element.id;
-    objet.appendChild(monItem2).textContent = element.employee_name;
-
-    let lemail = element.employee_name.split(' ');
-    objet.appendChild(monItem3).textContent = (lemail[0][0] + "." + lemail[1] + "@email.com").toLowerCase()
-
-    objet.appendChild(monItem4).textContent = (element.employee_salary / 12).toFixed(2) + " €";
-    objet.appendChild(monItem5).textContent = 2024 - element.employee_age;
-
-    let buttonDup = document.createElement('button');
-    let buttonSup = document.createElement('button');
-    buttonDup.textContent = 'Dupliquer';
-    buttonSup.textContent = 'Supprimer';
-    objet.appendChild(monItem6).appendChild(buttonDup).setAttribute('id', 'd' + i);
-    objet.appendChild(monItem6).appendChild(buttonSup).setAttribute('id', 's' + i);
-
-    i++;
-
-    row.append(monItem1, monItem2, monItem3, monItem4, monItem5, monItem6);
-    document.getElementById("objet2").appendChild(row);
+        objets.appendChild(monItem7).textContent = datas.data.length;
+        objets.appendChild(monItem8).textContent = '';
+       // objets.appendChild(monItem9).textContent = '';
+    
+        let sum = 0;
+        
+        for (let i = 0; i < datas.data.length; i++ ) {
+            sum += datas.data[i].employee_salary;
+        }
+        
+        objets.appendChild(monItem10).textContent = (sum / 12).toFixed(2) + " €";
+        objets.appendChild(monItem11).textContent = '';
+        //objets.appendChild(monItem12).textContent = '';
 }
 
+function generer() {
+    
+    document.getElementById("objet2").innerHTML = '';
+
+    for (const element of datas.data) {
+
+        let row = document.createElement('tr');
+
+
+        row.setAttribute('id', 'p' + element.id)
+
+        let monItem1 = document.createElement("td");
+        let monItem2 = document.createElement("td");
+        let monItem3 = document.createElement("td");
+        let monItem4 = document.createElement("td");
+        let monItem5 = document.createElement("td");
+        let monItem6 = document.createElement("td");
+
+        let objet = document.getElementById("objet2");
+
+        objet.appendChild(monItem1).textContent = element.id;
+        objet.appendChild(monItem2).textContent = element.employee_name;
+
+        let lemail = element.employee_name.split(' ');
+        objet.appendChild(monItem3).textContent = (lemail[0][0] + "." + lemail[1] + "@email.com").toLowerCase()
+
+        objet.appendChild(monItem4).textContent = (element.employee_salary / 12).toFixed(2) + " €";
+        objet.appendChild(monItem5).textContent = 2024 - element.employee_age;
+
+        let buttonDup = document.createElement('button');
+        let buttonSup = document.createElement('button');
+
+        buttonDup.classList.add('duplication');
+        buttonSup.classList.add('suppression');
+
+        let iconDup = document.createElement('i');
+        iconDup.textContent = '';
+        iconDup.classList.add('fa');
+        iconDup.classList.add('fa-copy');
+        buttonDup.appendChild(iconDup);
+
+        let iconSup = document.createElement('i');
+        iconSup.textContent = '';
+        iconSup.classList.add('fa');
+        iconSup.classList.add('fa-trash');
+        buttonSup.appendChild(iconSup);
+
+        buttonDup.innerHTML += ' Dupliquer';
+        buttonSup.innerHTML += ' Supprimer';
+
+        buttonDup.addEventListener("click", duplicate);
+        buttonSup.addEventListener("click", deleteBtn);
+        objet.appendChild(monItem6).appendChild(buttonDup).id = ('d' + element.id);
+        objet.appendChild(monItem6).appendChild(buttonSup).id = ('s' + element.id);
+
+
+        row.append(monItem1, monItem2, monItem3, monItem4, monItem5, monItem6);
+        document.getElementById("objet2").appendChild(row);
+        
+    }
+    leTotal();
+}
+
+/*
 function callNewbutton() {
     for (let n = 0; n < datas.data.length + 1; n++) {
-        const btnDup = document.querySelectorAll("#d" + n);
+        const btnDup = document.querySelector("#d" + n);
 
-        btnDup.forEach((btn) => {
-            btn.addEventListener("click", duplicate);
-        });
+        btnDup.addEventListener("click", duplicate);
     }
 }
 
@@ -58,12 +106,10 @@ function callNewbutton2() {
             btn.addEventListener("click", deleteBtn);
         });
     }
-}
+}*/
 
-callNewbutton();
-callNewbutton2();
+generer();
 
-let j = 25;
 
 function duplicate() {
 
@@ -72,43 +118,10 @@ function duplicate() {
             if (parseInt(this.id.replace('d', '')) === (k + 1)) {
 
                 let person = structuredClone(datas.data[k])
+                person.id = datas.data.length + 1; // rempalcer par recherche de l'identifiatn el plus élevé + 1
                 datas.data.push(person)
 
-                let row = document.createElement('tr');
-
-                row.setAttribute('id', 'p' + i)
-
-                let monItem1 = document.createElement("td");
-                let monItem2 = document.createElement("td");
-                let monItem3 = document.createElement("td");
-                let monItem4 = document.createElement("td");
-                let monItem5 = document.createElement("td");
-                let monItem6 = document.createElement("td");
-
-                let objet = document.getElementById("objet2");
-
-                objet.appendChild(monItem1).textContent = j++;
-                objet.appendChild(monItem2).textContent = person.employee_name;
-
-                let lemail = person.employee_name.split(' ');
-                objet.appendChild(monItem3).textContent = (lemail[0][0] + "." + lemail[1] + "@email.com").toLowerCase()
-
-                objet.appendChild(monItem4).textContent = (person.employee_salary / 12).toFixed(2) + " €";
-                objet.appendChild(monItem5).textContent = 2024 - person.employee_age;
-
-                let buttonDup = document.createElement('button');
-                let buttonSup = document.createElement('button');
-                buttonDup.textContent = 'Dupliquer';
-                buttonSup.textContent = 'Supprimer';
-                objet.appendChild(monItem6).appendChild(buttonDup).setAttribute('id', 'd' + i);
-                objet.appendChild(monItem6).appendChild(buttonSup).setAttribute('id', 's' + i);
-
-                i++;
-
-                row.append(monItem1, monItem2, monItem3, monItem4, monItem5, monItem6);
-                document.getElementById("objet2").appendChild(row);
-
-                callNewbutton();
+                generer();
             }
         }
     }
@@ -116,10 +129,45 @@ function duplicate() {
 function deleteBtn() {
     for (let k = 0; k < datas.data.length; k++) {
 
-        if (parseInt(this.id.replace('s', '')) === (k + 1)) {
-            delete datas.data[k]
-            console.log(document.getElementById('s' + k).closest('tr'));
-            callNewbutton2();
+            console.log(this.id, datas.data);
+        if (parseInt(this.id.replace('s', '')) === datas.data[k].id) {
+            //delete datas.data[k]
+            datas.data = datas.data.filter(x => x.id != datas.data[k].id);
+            generer();
         }
     }
+}
+
+const haut = document.querySelector("#trihaut");
+haut.addEventListener("click", triCroissant);
+
+const bas = document.querySelector("#tribas");
+bas.addEventListener("click", triDecroissant);
+
+const doubletri = document.querySelector("#caret");
+doubletri.addEventListener("click", triAscdec);
+
+function triCroissant() {
+    datas.data.sort(function(a, b){return a.employee_salary-b.employee_salary});
+    generer();
+}
+
+function triDecroissant() {
+    datas.data.sort(function(a, b){return a.employee_salary-b.employee_salary}).reverse();
+    generer();
+}
+
+let triAsc = true;
+
+function triAscdec() {
+    if(triAsc === true) {
+        triCroissant();
+    }
+    else {
+        triDecroissant();
+    }
+
+    triAsc = !triAsc; // inverse le booleén
+
+    console.log(triAsc)
 }
