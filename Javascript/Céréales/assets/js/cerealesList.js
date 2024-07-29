@@ -25,6 +25,24 @@ export class CerealesList
         return json;
     }
 
+    removeCereal(_id) {
+        this.sesCereales = this.sesCereales.filter(x => x.id != _id);
+    }
+
+/*    searchCereals(_name) {
+        let input = document.getElementById("site-search");
+    
+        input.addEventListener('keyup', (event) => {
+            
+            const searchString = event.target.value;
+            const filteredCereals = this.sesCereales.filter((letters) => {
+                return letters.name.includes(searchString);
+            })
+                console.log(filteredCereals);
+                createRows(filteredCereals);
+        })
+    } */
+
     /* static async ultraLoad() {
         // Récupération du JSON
         let response = await fetch('./assets/data/cereals.json');
@@ -33,4 +51,5 @@ export class CerealesList
 
         return json.data;
     } */
+
 }

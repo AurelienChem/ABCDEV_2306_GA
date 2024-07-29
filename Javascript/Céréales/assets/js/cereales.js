@@ -1,4 +1,21 @@
+
+
 export class Cereales {
+    /**
+     * 
+     * @param {*} _id 
+     * @param {*} _name 
+     * @param {*} _calories 
+     * @param {*} _protein 
+     * @param {*} _sodium 
+     * @param {*} _fiber 
+     * @param {*} _carbo 
+     * @param {*} _sugars 
+     * @param {*} _potass 
+     * @param {*} _vitamins 
+     * @param {*} _rating 
+     */
+    
     constructor(_id, _name, _calories, _protein, _sodium, _fiber, _carbo, _sugars, _potass, _vitamins, _rating) {
         this.id = _id;
         this.name = _name;
@@ -13,7 +30,6 @@ export class Cereales {
         this.rating = _rating;
         this.ranking = '';
         this.rankingNS();
-        this.supprimer = 'X'
     }
 
     rankingNS() {
