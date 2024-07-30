@@ -35,16 +35,16 @@ function createButton(aCereal) {
         collectionDeCereales.removeCereal(aCereal.id)
         createRows()
     })
-    lebutton.setAttribute('class','bouton')
+    lebutton.setAttribute('class', 'bouton')
     lebutton.appendChild(createCell('X'))
-  return lebutton
+    return lebutton
 }
 
 function createRows() {
     let tbody = document.getElementById('Table');
     tbody.innerHTML = '';
 
-    for(let aCereal of collectionDeCereales.sesCereales) {
+    for (let aCereal of collectionDeCereales.sesCereales) {
         tbody.appendChild(createOneRow(aCereal)).appendChild(createButton(aCereal));
     }
 }
@@ -53,31 +53,91 @@ function searchCereals() {
     let input = document.getElementById("site-search");
 
     input.addEventListener('keyup', (event) => {
-        let tbody = document.getElementById('Table');
-        tbody.innerHTML = '';
 
-        const searchString = event.target.value;
-        const filteredCereals = collectionDeCereales.sesCereales.filter((letters) => {
-            return letters.name.includes(searchString)
+        if (event.target.value.length > 1) {
+            let tbody = document.getElementById('Table');
+            tbody.innerHTML = '';
+            const searchString = event.target.value.toLowerCase();
+            const filteredCereals = collectionDeCereales.sesCereales.filter((letters) => {
+                return letters.name.toLowerCase().includes(searchString)
+            })
+
+            for (let aCereal of filteredCereals) {
+                tbody.appendChild(createOneRow(aCereal)).appendChild(createButton(aCereal));
+            }
+        }
+    })
+
+}
+
+function getLetters() {
+    const tableLetter = [];
+
+    for (let i = 0; i < 5; i++) {
+        let letter = document.getElementById("I" + i).textContent
+        tableLetter.push(letter)
+    }
+    return tableLetter
+}
+
+
+function filterCereals(theLetter, checkbox) {
+    const cerealLetter = collectionDeCereales.sesCereales.filter((rank) => rank.ranking === theLetter)
+    if(checkbox.checked) {
+        for(let cereal of cerealLetter) {
+            chosen.push(cereal)
+        }
+    }
+    else {
+        chosen = chosen.filter(rank => rank.ranking !== theLetter)
+    }
+}
+
+let chosen = [];
+const letters = getLetters();
+
+function sortCereals() {
+    for (let i = 0; i < letters.length; i++) {
+        let checkboxLetters = document.getElementById(letters[i]);
+
+        checkboxLetters.addEventListener('change', function (event) {
+            filterCereals(letters[i], event.target)
+            displayCereals();
         })
+    }
+}
 
-        for(let aCereal of filteredCereals) {
-            tbody.appendChild(createOneRow(aCereal)).appendChild(createButton(aCereal));
+function displayCereals() {
+    let tbody = document.getElementById('Table');
+    tbody.innerHTML = '';
+
+    for (let aCereal of chosen) {
+        tbody.appendChild(createOneRow(aCereal)).appendChild(createButton(aCereal));
+    }
+}
+
+searchCereals();
+
+for (let i = 0; i < letters.length; i++) {
+
+    let checkboxLetters = document.getElementById(letters[i]);
+
+    checkboxLetters.addEventListener('change', function () {
+        if (checkboxLetters.checked) {
+            checkCount++;
+        }
+        else {
+            checkCount--;
+        }
+        
+        if(checkCount === 0) {
+            createRows();
+        }
+
+        else {
+            sortCereals();
         }
     })
 }
 
-createRows();
-searchCereals();
-
-/*
-let elements = document.getElementsByClassName('bouton');
-
-
-for(let i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('click', function() {
-        if(collectionDeCereales.sesCereales[i].id) {
-            collectionDeCereales.sesCereales = collectionDeCereales.sesCereales.filter(x => x.id != collectionDeCereales.sesCereales[i].id)
-        }
-    });
-}*/
+createRows()

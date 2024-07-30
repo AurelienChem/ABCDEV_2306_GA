@@ -15,7 +15,7 @@ export class Cereales {
      * @param {*} _vitamins 
      * @param {*} _rating 
      */
-    
+
     constructor(_id, _name, _calories, _protein, _sodium, _fiber, _carbo, _sugars, _potass, _vitamins, _rating) {
         this.id = _id;
         this.name = _name;
@@ -50,7 +50,7 @@ export class Cereales {
                 break;
             case (rating < 55):
                 this.ranking = 'E';
-                break;         
+                break;
         }
     }
 }
