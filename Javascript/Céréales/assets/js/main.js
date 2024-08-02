@@ -116,28 +116,5 @@ function displayCereals() {
     }
 }
 
-searchCereals();
-
-for (let i = 0; i < letters.length; i++) {
-
-    let checkboxLetters = document.getElementById(letters[i]);
-
-    checkboxLetters.addEventListener('change', function () {
-        if (checkboxLetters.checked) {
-            checkCount++;
-        }
-        else {
-            checkCount--;
-        }
-        
-        if(checkCount === 0) {
-            createRows();
-        }
-
-        else {
-            sortCereals();
-        }
-    })
-}
-
-createRows()
+sortCereals();
+createRows();

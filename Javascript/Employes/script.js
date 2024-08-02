@@ -1,6 +1,8 @@
 let response = await fetch('./employees.json');
 let datas = await response.json();
 
+console.log(datas)
+
 function leTotal() {
         let monItem7 = document.createElement("td"); // total d'éléments
         let monItem8 = document.createElement("td"); // cellule fusionnée (prend la place de 2 cellules)
