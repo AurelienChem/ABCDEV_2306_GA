@@ -9,7 +9,7 @@
     }
 
     function getFullName(string $lastname, string $firstname) : string {
-        return $firstname . ' ' . strtoupper($lastname);
+        return $firstname . ' ' . mb_convert_case($lastname, MB_CASE_UPPER);
     }
 
     function askUser() {
@@ -20,6 +20,6 @@
     echo PHP_EOL;
     echo getUserName('albert', 'einstein');
     echo PHP_EOL;
-    echo getFullName('einstein', 'albert');
+    echo getFullName('éinstein', 'albert');
     echo PHP_EOL;
     echo askUser();
