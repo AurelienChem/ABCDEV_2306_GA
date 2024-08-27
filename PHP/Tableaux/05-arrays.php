@@ -1,43 +1,55 @@
 <?php
 
-$names = ['Joe', 'Jack', 'Léa', 'Zoé', 'Néo' ];
+$names = ['Léo', 'Léa', 'Georges', 'Maurice'];
 
-function firstItem(array $names): void
+function firstItem(array $tab): ?string
 {
-    $first = array_values($names)[0];
-    echo $first;
+    $first = $tab[0];
+    return $first;
 }
 
-firstItem($names);
-echo PHP_EOL;
-
-function lastItem(array $names): void
-{
-    $last = array_slice($names, -1)[0];
-    echo $last;
+if (var_dump(firstItem($names))) {
+    var_dump(firstItem($names));
+}
+else {
+    echo firstItem($names);
 }
 
-lastItem($names);
 echo PHP_EOL;
 
-function sortItem(array $names): array
+function lastItem(array $tab): ?string
 {
-    rsort($names);
-    print_r($names);
+    $last = $tab[count($tab)-1];
+    return $last;
+}
 
-    return $names;
+if (var_dump(lastItem($names))) {
+    var_dump(lastItem($names));
+}
+else {
+    echo lastItem($names);
+}
+
+echo PHP_EOL;
+
+function sortItem(array $tab): array
+{
+    rsort($tab);
+    print_r($tab);
+
+    return $tab;
 
 }
 
 echo sortItem($names);
 echo PHP_EOL;
 
-function stringItems(array $names): string
+function stringItems(array $tab): string
 {
-    sort($names);
-    print_r($names);
+    sort($tab);
+    print_r($tab);
 
-    return implode(", ", $names);
+    return implode(", ", $tab);
 }
 
 echo stringItems($names);
