@@ -1,6 +1,6 @@
 <?php
     function stringLength(string $word) : bool {
-        if(strlen($word) >= 9) {
+        if(mb_strlen($word) >= 9) {
             return true;
         }
         return false;
@@ -28,7 +28,7 @@
 
     function userLogin(string $name, string $password, array $search) : bool {
         foreach ($search as $key => $value) {
-            if($name === $key && $password === $value) {
+            if($name === $key && $password === $value && stringLength($password) && passwordCheck($password)) {
                 return true;
         }
         return false;

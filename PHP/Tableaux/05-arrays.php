@@ -1,6 +1,6 @@
 <?php
 
-$names = ['Léo', 'Léa', 'Georges', 'Maurice'];
+$names = ['Joe', 'Jack', 'Léa', 'Zoé', 'Néo' ];
 
 function firstItem(array $tab): ?string
 {
@@ -50,6 +50,13 @@ function stringItems(array $tab): string
     print_r($tab);
 
     return implode(", ", $tab);
+}
+
+if(empty($tab)) {
+    return "Nothing to display";
+}
+else {
+    echo stringItems($tab);
 }
 
 echo stringItems($names);

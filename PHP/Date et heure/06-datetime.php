@@ -1,5 +1,5 @@
 <?php
-    date_default_timezone_set('UTC');
+    date_default_timezone_set('Europe/Paris');
 
     function getToday() {
         $date = new DateTime('now');
@@ -38,4 +38,4 @@
 
     echo getTimeLeft('2024','08','27');
     echo PHP_EOL;
-    echo getTimeLeft('2024','10','30');
+    echo getTimeLeft('2024','11','03');
