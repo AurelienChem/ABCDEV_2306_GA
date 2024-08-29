@@ -39,3 +39,5 @@
     echo getTimeLeft('2024','08','27');
     echo PHP_EOL;
     echo getTimeLeft('2024','11','03');
+
+    echo strtotime($date->format('Y-m-d'));
