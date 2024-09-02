@@ -56,7 +56,7 @@ if(empty($tab)) {
     return "Nothing to display";
 }
 else {
-    echo stringItems($tab);
+    stringItems($tab);
 }
 
 echo stringItems($names);

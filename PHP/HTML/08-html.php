@@ -6,7 +6,9 @@ function liHTML(array $tab): string
     sort($tab);
     $value = "";
 
-    for ($i = 0; $i < count($tab); $i++) {
+    $length = count($tab);
+
+    for ($i = 0; $i < $length; $i++) {
         $value .=  "    <li>" . $tab[$i] . "</li>\n";
     }
     return $value;
