@@ -15,7 +15,18 @@ class Voiture
 
 	public function __toString(): string
 	{
-		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg";
+		if(mb_strlen($this->getMarque()) < 2 ) {
+			return 'Veuillez saisir une marque avec plus de un caractère';
+		}
+		elseif(mb_strlen($this->getModele()) < 1 ) {
+			return 'Veuillez saisir un modèle';
+		}
+		else if($this->getPoids() <= 0 && preg_match('/[0-9]/', $this->getPoids())) {
+			return 'Veuillez saisir un poids en nombre supérieur à 0';
+		}
+		else {
+			return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg";
+		}
 	}
 
 	public function getMarque(): string
@@ -50,6 +61,6 @@ class Voiture
 	}
 }
 
-$myVoiture = new Voiture('Toyota', 'Sprinter', 900);
+$myVoiture = new Voiture('TOYOTA', 'Sprinter', 0);
 echo $myVoiture;
 
