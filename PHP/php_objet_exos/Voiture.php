@@ -1,13 +1,14 @@
 <?php
-
+require_once 'Moteur.php';
 class Voiture
 {
 
-	protected $marque;
-	protected $modele;
-	protected $poids = 1000;
+	protected string $marque;
+	protected string $modele;
+	protected int $poids = 1000;
+	protected Moteur $moteur;
 
-	public function __construct(string $marque, string $modele, int $poids) {
+	public function __construct(string $marque, string $modele, int $poids, string $marqueMoteur, int $vitesseMax) {
 		if(mb_strlen($marque) > 2) {
 			$this->marque = $marque;
 		}
@@ -29,12 +30,7 @@ class Voiture
 			throw new Exception('Le poids ne peut pas être inférieur ou égal à zéro');
 		}
 
-		$this->poids = $poids;
-	}
-
-	public function __toString(): string
-	{
-		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg";
+		$this->moteur = new Moteur($marqueMoteur, $vitesseMax);
 	}
 
 	public function getMarque(): string
@@ -67,10 +63,19 @@ class Voiture
 	{
 		$this->poids = $poids;
 	}
+
+	public function __toString(): string
+	{
+		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg, {$this->moteur->getMarquemoteur()}, {$this->calculVitesseMax()} Km/h";
+	}
+
+	public function calculVitesseMax() : float {
+		return $this->moteur->getVitesseMax() - ($this->poids * 0.3);
+	}
 }
 
 try {
-	$myVoiture = new Voiture('Toyota', 'Sprinter', 900);
+	$myVoiture = new Voiture('Toyota', 'Sprinter', 900, 'ToyotaMoteur', 300);
 	echo $myVoiture;
 }
 
@@ -78,3 +83,4 @@ catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 
+echo PHP_EOL;

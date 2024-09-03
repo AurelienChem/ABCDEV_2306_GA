@@ -84,4 +84,4 @@
 
     }
 
-    echo getTimeLeft('2024-11-03');
+    echo getTimeLeft('2024-09-04');
