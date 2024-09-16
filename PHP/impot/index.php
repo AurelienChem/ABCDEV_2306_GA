@@ -12,6 +12,7 @@
     <?php 
 
     require_once './models/contribuable.php';
+    require_once './models/mensualite.php';
 
     if(isset($_GET['firstname']) && isset($_GET['lastname']) && isset($_GET['revenu']) && $_GET['revenu'] > 0)
     {
@@ -29,6 +30,8 @@
         <input name="revenu" id="revenu" type="number" step="0.01"><br>
         <!-- <input type="number" name="impot" id="impot" readonly="true" /> -->
         <button type="submit">Ok</button>
+        <!-- <label for="mensualite">Mensualité:</label>
+        <input name="mensualite" id="mensualite" type="number" step="0.01" value=$_GET['mensualite'] disabled> -->
     </form>
 
     <p><?php echo $impots;?></p>

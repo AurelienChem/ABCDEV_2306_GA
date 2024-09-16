@@ -9,14 +9,14 @@ class Voiture
 	protected Moteur $moteur;
 
 	public function __construct(string $marque, string $modele, int $poids, string $marqueMoteur, int $vitesseMax) {
-		if(mb_strlen($marque) > 2) {
+		if(mb_strlen($marque) > 1) {
 			$this->marque = $marque;
 		}
 		else {
 			throw new Exception('Erreur, la marque indiqué possède moins de deux caractères');
 		}
 
-		if(mb_strlen($modele) > 1) {
+		if(mb_strlen($modele) > 0) {
 			$this->modele = $modele;
 		}
 		else {
