@@ -64,13 +64,34 @@ class Voiture
 		$this->poids = $poids;
 	}
 
+	public function calculVitesseMax() : float {
+		return $this->moteur->getVitesseMax() - ($this->poids * 0.3);
+	}
+
 	public function __toString(): string
 	{
 		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg, {$this->moteur->getMarquemoteur()}, {$this->calculVitesseMax()} Km/h";
 	}
+}
 
-	public function calculVitesseMax() : float {
-		return $this->moteur->getVitesseMax() - ($this->poids * 0.3);
+class Voiture_de_Course extends Voiture
+{
+	public function __construct(string $marque, string $modele, int $poids, string $marqueMoteur, int $vitesseMax)
+    {
+		parent::__construct($marque, $modele, $poids, $marqueMoteur, $vitesseMax);
+
+		if($marque !== $marqueMoteur) {
+			throw new Exception('La marque du moteur est differente de la marque de la voiture');
+		}
+	}
+
+	public function calculVitesseFormuleMax() : float {
+		return $this->moteur->getVitesseMax() - ($this->poids * 0.05);
+	}
+
+	public function __toString(): string
+	{
+		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg, {$this->moteur->getMarquemoteur()}, {$this->calculVitesseFormuleMax()} Km/h";
 	}
 }
 
@@ -84,3 +105,13 @@ catch (Exception $e) {
 }
 
 echo PHP_EOL;
+
+try {
+$myVoitureFormule = new Voiture_de_Course('Renault', 'F1', 768, 'Renault', 350);
+echo $myVoitureFormule;
+}
+
+catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
