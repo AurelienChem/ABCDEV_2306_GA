@@ -75,12 +75,13 @@ class Voiture
 }
 
 class Voiture_de_Course extends Voiture
-{
+{ 
+
 	public function __construct(string $marque, string $modele, int $poids, string $marqueMoteur, int $vitesseMax)
     {
 		parent::__construct($marque, $modele, $poids, $marqueMoteur, $vitesseMax);
 
-		if($marque !== $marqueMoteur) {
+		if($marque !== $this->moteur->getMarquemoteur()) {
 			throw new Exception('La marque du moteur est differente de la marque de la voiture');
 		}
 	}
@@ -91,20 +92,20 @@ class Voiture_de_Course extends Voiture
 
 	public function __toString(): string
 	{
-		return "{$this->getMarque()} {$this->getModele()}, {$this->getPoids()} Kg, {$this->moteur->getMarquemoteur()}, {$this->calculVitesseFormuleMax()} Km/h";
+		return "{$this->marque} {$this->modele}, {$this->poids} Kg, {$this->moteur->getMarquemoteur()}, {$this->calculVitesseFormuleMax()} Km/h";
 	}
 }
 
-try {
-	$myVoiture = new Voiture('Toyota', 'Sprinter', 900, 'ToyotaMoteur', 300);
-	echo $myVoiture;
-}
+// try {
+// 	$myVoiture = new Voiture('Toyota', 'Sprinter', 900, 'ToyotaMoteur', 300);
+// 	echo $myVoiture;
+// }
 
-catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
+// catch (Exception $e) {
+//     echo 'Caught exception: ',  $e->getMessage(), "\n";
+// }
 
-echo PHP_EOL;
+// echo PHP_EOL;
 
 try {
 $myVoitureFormule = new Voiture_de_Course('Renault', 'F1', 768, 'Renault', 350);
