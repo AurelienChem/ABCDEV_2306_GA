@@ -22,7 +22,7 @@ class Client extends Personne
 
 	function __toString()
 	{
-		return "{$this->age}, {$this->nom}, {$this->prenom}, {$this->codePostal}, {$this->noClient}, {$this->nomCommune}, {$this->nomRue}, {$this->noRue}";
+		return "{$this->getAge()}, {$this->getNom()}, {$this->getPrenom()}, {$this->getcodePostal()}, {$this->getnoClient()}, {$this->getnomCommune()}, {$this->getnomRue()}, {$this->getnoRue()}";
 	}
 
 	function getAge(): int
@@ -90,3 +90,6 @@ class Client extends Personne
 		$this->noRue = $noRue;
 	}
 }
+
+$monClient = new Client(70, 'Tournesol', 'Tryphon', 75000, 7532, 'Moulinsart', 'Chateau', 64);
+echo $monClient;

@@ -16,7 +16,7 @@ class Intervenant extends Personne
 
 	function __toString()
 	{
-		return "{$this->age}, {$this->nom}, {$this->prenom}, {$this->autresRevenus}, {$this->salaire}";
+		return " ,{$this->getAge()}, {$this->getNom()}, {$this->getPrenom()}, {$this->getAutresRevenus()}, {$this->getSalaire()}";
 	}
 
 	function getAge(): int
@@ -39,6 +39,11 @@ class Intervenant extends Personne
 		return $this->prenom;
 	}
 
+	function getSalaire(): float
+	{
+		return $this->salaire;
+	}
+
 	function setAutresRevenus($autresRevenus): void
 	{
 		$this->autresRevenus = $autresRevenus;
@@ -55,3 +60,5 @@ class Intervenant extends Personne
 	}
 
 }
+$monIntervenant = new Intervenant(48,'Truite','Aurelien',5000,40000);
+echo $monIntervenant;

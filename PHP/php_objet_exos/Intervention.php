@@ -10,17 +10,18 @@ class Intervention
 	protected Client $client;
 	protected Intervenant $intervenant;
 
-	function __construct($dateIntervention, $descIntervention, $client, $intervenant)
+	function __construct($dateIntervention, $descIntervention)
 	{
 		$this->dateIntervention = $dateIntervention;
 		$this->descIntervention = $descIntervention;
-		$this->client = $client;
-		$this->intervenant = $intervenant;
+
+		$this->client = new Client();
+		$this->intervenant = new Intervenant();
 	}
 
 	function __toString()
 	{
-		return "{$this->dateIntervention}, {$this->descIntervention}, {$this->client}, {$this->intervenant}";
+		return ", {$this->getdateIntervention()}, {$this->getdescIntervention()}";
 	}
 
 	function getdateIntervention(): string
@@ -52,5 +53,7 @@ class Intervention
 	{
 		$this->descIntervention = $descIntervention;
 	}
-
 }
+
+$monIntervention = new Intervention('09-11-2024 16:00', 'test');
+echo $monIntervention;

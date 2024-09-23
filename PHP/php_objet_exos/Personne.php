@@ -36,6 +36,6 @@ class Personne
 	
 	function __toString(): string
 	{
-		return "{$this->age}, {$this->nom}, {$this->prenom}";
+		return "{$this->getAge()}, {$this->getNom()}, {$this->getPrenom()}";
 	}
 }
