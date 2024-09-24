@@ -7,7 +7,23 @@
 </head>
 <body>
     <?php
-        try {
+    require_once ('./dao/dbconnect.php');
+    require_once ('./dao/LISTE_RESTO.php');
+
+    $objConnection = new Dbconnect('localhost', 'guide', 'root', '');
+    $myConnect = $objConnection->tryConnect();
+
+    $objConnectionAll = new Liste_resto($myConnect,'restaurants');
+    $myConnectAll = $objConnectionAll->affichageAll();
+
+    var_dump($myConnect);
+    var_export($myConnectAll);
+    var_export($objConnectionAll->info_table());
+    var_export($objConnectionAll->chercherResto());
+
+
+
+    /* try {
             $myConnection = new PDO("mysql:host=localhost;port=3306;dbname=guide_resto;charset=utf8", "root", '');
             $pdoStatement = $myConnection->query("SELECT * FROM restaurants", PDO::FETCH_ASSOC);
             $monTab = $pdoStatement->fetchAll();
@@ -19,7 +35,7 @@
         } catch (PDOException $e) {
             printf("Echec de la connexion : %s\n", $e->getMessage());
             exit();
-        }
+        } */
     ?>
 </body>
 </html>
