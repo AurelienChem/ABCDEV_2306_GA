@@ -16,10 +16,11 @@
     $objConnectionAll = new Liste_resto($myConnect,'restaurants');
     $myConnectAll = $objConnectionAll->affichageAll();
 
-    var_dump($myConnect);
-    var_export($myConnectAll);
-    var_export($objConnectionAll->info_table());
-    var_export($objConnectionAll->chercherResto());
+    /* var_dump($myConnect);
+    var_export($myConnectAll); */
+    var_export($objConnectionAll->chercherResto(3));
+
+    echo $objConnectionAll->rendre_HTML();
 
 
 

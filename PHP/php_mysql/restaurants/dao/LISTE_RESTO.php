@@ -24,18 +24,23 @@ class Liste_resto {
         return $liste;
     }
 
-    public function chercherResto() : array {
-        $sqlQuery2 = 'SELECT id, nom, adresse, prix, commentaire, note, visite FROM '. $this->table;
-        $state = $this->connexion->query($sqlQuery2);
-        $tabName = $state->getColumnMeta(0);
-        $nomColumn = $tabName["name"];
-        array_push($this->tabId,$nomColumn);
+    public function chercherResto($id) : array {
+        $sqlQuery2 = 'SELECT id, nom, adresse, prix, commentaire, note, visite FROM '. $this->table . ' WHERE id = :id';
+        $pdoStatement = $this->connexion->prepare($sqlQuery2);
+        $pdoStatement->bindParam(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
+       
+        
+        while($row = $pdoStatement->fetch() ) {
+            array_push($this->tabId,$row);
+        }
+
 
         return $this->tabId;
     }
 
 
-    public function info_table() : array {
+    private function info_table() : array {
 
         $sqlQuery3 = 'SELECT * FROM '.$this->table;
         $state = $this->connexion->query($sqlQuery3);
@@ -49,4 +54,34 @@ class Liste_resto {
 
         return $this->tabColumn;
     }
+
+    public function rendre_HTML() : string {
+        $chaineTab = '<table><thead><tr>';
+        $tabTitre = $this->info_table();
+
+        for ($i=0; $i < count($tabTitre); $i++) { 
+            $chaineTab .= '<th>' . $tabTitre[$i] . '</th>';
+        }
+
+        $chaineTab .= '</tr></thead>';
+        $chaineTab .= '<tbody>';
+        
+        $tabContenu = $this->affichageAll();
+
+        for ($i=0; $i < count($tabContenu); $i++) { 
+            $chaineTab .= '<tr>';
+
+            foreach($tabContenu[$i] as $key=>$value) {
+                $chaineTab .= '<td>' . $value . '</td>';
+            }
+
+            $chaineTab .= '</tr>';
+        }
+
+        $chaineTab .= '</tbody></table>';
+
+        return $chaineTab;
+    }
+
+    
 }
