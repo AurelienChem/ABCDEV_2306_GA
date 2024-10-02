@@ -21,6 +21,11 @@
     var_export($objConnectionAll->chercherResto(3));
 
     echo $objConnectionAll->rendre_HTML();
+    
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        echo $objConnectionAll->supprimerLigne($_GET['id']);
+        echo "<script>window.location.href = 'http://localhost/php_mysql/restaurants/index.php'</script>";
+    }
 
 
 

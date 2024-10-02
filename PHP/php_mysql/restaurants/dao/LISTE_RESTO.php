@@ -15,7 +15,7 @@ class Liste_resto {
         $this->tabId = $_tabId;
     }
 
-    public function affichageAll() {
+    public function affichageAll() : array {
         $sqlQuery = 'SELECT id, nom, adresse, prix, commentaire, note, visite FROM '. $this->table;
         $listeStatement = $this->connexion->prepare($sqlQuery);
         $listeStatement->execute();
@@ -24,7 +24,7 @@ class Liste_resto {
         return $liste;
     }
 
-    public function chercherResto($id) : array {
+    public function chercherResto(int $id) : array {
         $sqlQuery2 = 'SELECT id, nom, adresse, prix, commentaire, note, visite FROM '. $this->table . ' WHERE id = :id';
         $pdoStatement = $this->connexion->prepare($sqlQuery2);
         $pdoStatement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -56,8 +56,9 @@ class Liste_resto {
     }
 
     public function rendre_HTML() : string {
-        $chaineTab = '<table><thead><tr>';
+        $chaineTab = '<table><thead><tr><th>modification</th><th>suppression</th>';
         $tabTitre = $this->info_table();
+
 
         for ($i=0; $i < count($tabTitre); $i++) { 
             $chaineTab .= '<th>' . $tabTitre[$i] . '</th>';
@@ -70,6 +71,8 @@ class Liste_resto {
 
         for ($i=0; $i < count($tabContenu); $i++) { 
             $chaineTab .= '<tr>';
+            $chaineTab .= '<td><a href=detail.php?id='.$tabContenu[$i]['id'].'>modifier</a></td>' ;
+            $chaineTab .= '<td><form action="index.php" method="GET"><input type="hidden" value="'.$tabContenu[$i]['id'].'"  name="id"  /><input type="submit" name="supprimer" value="supprimer"/></form></td>';
 
             foreach($tabContenu[$i] as $key=>$value) {
                 $chaineTab .= '<td>' . $value . '</td>';
@@ -83,5 +86,29 @@ class Liste_resto {
         return $chaineTab;
     }
 
-    
+    public function supprimerLigne(int $_id) : int {
+        $sqlQuery4 = 'DELETE FROM ' . $this->table . ' WHERE id = :id'; /*:id = veut dire que l'on remplace par la variable $_id) */
+        $pdoStatement = $this->connexion->prepare($sqlQuery4);
+        $pdoStatement->bindParam(':id', $_id, PDO::PARAM_INT); /* liaison avec paramètres et le marqueur */
+        $pdoStatement->execute();
+        $nbLignes = $pdoStatement->rowCount();
+
+        return $nbLignes;
+    }
+
+    public function modifierLigne(string $_nom, string $_adresse, float $_prix, string $_commentaire, float $_note, string $_visite, int $_id) : bool {
+        $sqlQuery5 = 'UPDATE ' . $this->table . ' SET nom = ?, adresse = ?, prix = ?, commentaire = ?, note = ?, visite = ? WHERE id = ?';
+        $pdoStatement = $this->connexion->prepare($sqlQuery5);
+        $pdoStatement->execute(array($_nom, $_adresse, $_prix, $_commentaire, $_note, $_visite, $_id));
+        $nbLignes = $pdoStatement->rowCount();
+
+        /* echo $nbLignes; */
+
+        $bool=false;
+        
+        if($nbLignes === 1) {
+            $bool=true;
+        }
+        return $bool;
+    }
 }
