@@ -8,7 +8,7 @@
 <body>
     <?php
     require_once ('./dao/dbconnect.php');
-    require_once ('./dao/LISTE_RESTO.php');
+    require_once ('./dao/Liste_resto.php');
 
     $objConnection = new Dbconnect('localhost', 'guide', 'root', '');
     $myConnect = $objConnection->tryConnect();

@@ -86,6 +86,34 @@ class Liste_resto {
         return $chaineTab;
     }
 
+    public function creerLigne(string $_nom, string $_adresse, float $_prix, string $_commentaire, float $_note, string $_visite) {
+        $sqlQuery5 = 'INSERT INTO ' . $this->table . ' VALUES (id, ?, ?, ?, ?, ?, ?)';
+        $nom = $this->nettoyerChaine($_nom);
+        $adresse = $this->nettoyerChaine($_adresse);
+        $commentaire = $this->nettoyerChaine($_commentaire);
+        $prix = floatval($_prix);
+        $note = floatval($_note);
+
+        $bool=false;
+
+        try {
+            $maDate = new DateTime($_visite);
+        } catch (DateInvalidTimeZoneException $e) {
+            echo $e->getMessage();
+            return $bool;
+        }
+
+        $pdoStatement = $this->connexion->prepare($sqlQuery5);
+        $pdoStatement->execute([$nom, $adresse, $prix, $commentaire, $note, $_visite]);
+        
+        $nbLignes = $pdoStatement->rowCount();
+
+        if($nbLignes === 1) {
+            $bool=true;
+        }
+        return $bool;
+    }
+
     public function supprimerLigne(int $_id) : int {
         $sqlQuery4 = 'DELETE FROM ' . $this->table . ' WHERE id = :id'; /*:id = veut dire que l'on remplace par la variable $_id) */
         $pdoStatement = $this->connexion->prepare($sqlQuery4);
@@ -96,11 +124,41 @@ class Liste_resto {
         return $nbLignes;
     }
 
+    private function nettoyerChaine($_maChaine) : string {
+        $chaine = trim($_maChaine); /* commence et termine par un caractère */
+        $chaine = addslashes($chaine); /* enlève l'antislashes devant les caractères spéciaux */
+        $chaine = htmlspecialchars($chaine); /* chevrons ouvrant ou fermant transformés en affichage seulement */
+
+        return $chaine;
+    }
+
+    private function verifNombre($_maChaine) : int {
+        $subject = $_maChaine;
+        $pattern = '/^[0-9]+$/'; /* ^ prend le début de la chaine, le $ la fin de la chaine et + veut dire au moins 1 chiffre */
+        $res = preg_match($subject,$pattern);
+
+        return $res;
+    }
+
     public function modifierLigne(string $_nom, string $_adresse, float $_prix, string $_commentaire, float $_note, string $_visite, int $_id) : bool {
         $sqlQuery5 = 'UPDATE ' . $this->table . ' SET nom = ?, adresse = ?, prix = ?, commentaire = ?, note = ?, visite = ? WHERE id = ?';
         $pdoStatement = $this->connexion->prepare($sqlQuery5);
-        $pdoStatement->execute(array($_nom, $_adresse, $_prix, $_commentaire, $_note, $_visite, $_id));
-        $nbLignes = $pdoStatement->rowCount();
+
+
+        if(filter_var($_prix, FILTER_VALIDATE_FLOAT) !== false) {
+            $prix = filter_var($_prix, FILTER_VALIDATE_FLOAT);
+        }
+
+        $nom = $this->nettoyerChaine($_nom);
+        $adresse = $this->nettoyerChaine($_adresse);
+        $commentaire = $this->nettoyerChaine($_commentaire);
+        $visite = $this->nettoyerChaine($_visite);
+
+
+        // if($this->verifNombre($_prix) == 1 && $this->verifNombre($_note) == 1) {
+            $pdoStatement->execute(array($nom, $adresse, $prix, $commentaire, $_note, $visite, $_id));
+            $nbLignes = $pdoStatement->rowCount();
+        // }  
 
         /* echo $nbLignes; */
 
