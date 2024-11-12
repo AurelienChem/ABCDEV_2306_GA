@@ -12,10 +12,22 @@ session_start();
 <body>
 <?php 
 
+require("./utilisateurs.php");
+require("./Dbconnect.php");
+
 /* niveau 2 acces à tout, niveau 1 acces qu'a certains bateaux */
 
 if(isset($_SESSION["lastname_user"]) && isset($_SESSION["level"]) && $_SESSION["level"] === 2) {
+	if(isset($_POST["logout"])) {
+		$objUser = new Utilisateurs();
+		$objUser->deconnexion(intval($_POST["logout"]));
+	}
 ?>
+<form action="" method="POST">
+	<input type="hidden" name="logout" value="1" id="logout">
+	<input type="submit" name="supprBtn" value="Deconnexion" id="supprBtn">
+</form>
+
 	<ul>
 		<li  class="">
 			<a  class="" href="/edel/edel2" >
@@ -81,6 +93,10 @@ if(isset($_SESSION["lastname_user"]) && isset($_SESSION["level"]) && $_SESSION["
 /* niveau 1 accès qu'a certains bateaux */
 elseif(isset($_SESSION["lastname_user"]) && isset($_SESSION["level"]) && $_SESSION["level"] === 1) {
 ?>
+<form action="" method="POST">
+	<input type="hidden" name="logout" value="1" id="logout">
+	<input type="submit" name="supprBtn" value="Deconnexion" id="supprBtn">
+</form>
 	<ul>
 		<li  class="">
 			<a  class="" href="/edel/edel2" >

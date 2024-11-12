@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require("./utilisateurs");
+require("./utilisateurs.php");
 require("./Dbconnect.php");
 
 $objUser = new Utilisateurs();
@@ -13,9 +13,11 @@ if (!empty($_POST["mail"]) && !empty($_POST["psw"])) {
     $_SESSION["level"] = $data["level"];
     $_SESSION["firstname_user"] = $data["firstname_user"];
 
-    header("Location: ./liste.php");
+    header("Location: ./liste.php"); /* redirection sur un autre URL */
   }
 }
+
+
 
 ?>
 
